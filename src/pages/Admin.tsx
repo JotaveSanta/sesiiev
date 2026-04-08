@@ -14,7 +14,7 @@ interface QuestionRow {
   question_text: string;
   answered: boolean;
   created_at: string;
-  profiles: { display_name: string | null } | null;
+  display_name?: string | null;
 }
 
 function getExerciseTitle(exerciseId: string): string {
