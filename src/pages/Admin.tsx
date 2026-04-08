@@ -97,7 +97,7 @@ const Admin = () => {
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="text-xs font-bold text-primary">{q.profiles?.display_name ?? "Anônimo"}</span>
+                      <span className="text-xs font-bold text-primary">{q.display_name ?? "Anônimo"}</span>
                       <span className="text-xs text-muted-foreground">•</span>
                       <span className="text-xs text-muted-foreground">{getExerciseTitle(q.exercise_id)}</span>
                       <span className="text-xs text-muted-foreground">•</span>
