@@ -93,6 +93,14 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-6px)" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -100,6 +108,8 @@ export default {
         "pop-in": "pop-in 0.3s ease-out",
         "confetti": "confetti 0.8s ease-out forwards",
         "bounce-subtle": "bounce-subtle 1s ease-in-out infinite",
+        "float": "float 4s ease-in-out infinite",
+        "fade-in": "fade-in 0.4s ease-out",
       },
     },
   },
