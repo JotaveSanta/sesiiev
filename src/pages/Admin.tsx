@@ -34,11 +34,23 @@ const Admin = () => {
   useEffect(() => {
     if (!user) return;
     const fetchQuestions = async () => {
-      const { data } = await supabase
+      const { data: questionsData } = await supabase
         .from("questions")
-        .select("*, profiles(display_name)")
+        .select("*")
         .order("created_at", { ascending: false });
-      setQuestions((data as QuestionRow[]) ?? []);
+
+      if (!questionsData) { setLoading(false); return; }
+
+      // Fetch profile names for all unique user_ids
+      const userIds = [...new Set(questionsData.map(q => q.user_id))];
+      const { data: profilesData } = await supabase
+        .from("profiles")
+        .select("user_id, display_name")
+        .in("user_id", userIds);
+
+      const nameMap = new Map(profilesData?.map(p => [p.user_id, p.display_name]) ?? []);
+
+      setQuestions(questionsData.map(q => ({ ...q, display_name: nameMap.get(q.user_id) })));
       setLoading(false);
     };
     fetchQuestions();
