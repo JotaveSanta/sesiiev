@@ -21,7 +21,7 @@ const Index = () => {
 
   const renderContent = () => {
     if (view.type === "admin") {
-      return <AdminPanel questions={progress.questions} onClose={() => setView({ type: "path" })} />;
+      return <AdminPanel questions={[]} onClose={() => setView({ type: "path" })} />;
     }
 
     if (view.type === "exercise") {
