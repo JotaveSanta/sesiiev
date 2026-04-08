@@ -1,45 +1,63 @@
 import { useState, useCallback, useEffect } from "react";
 import { levels } from "@/data/levels";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface ProgressState {
   completedExercises: string[];
-  questions: { exerciseId: string; question: string; timestamp: number }[];
-}
-
-const STORAGE_KEY = "iev-volleyball-progress";
-
-function loadProgress(): ProgressState {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
-  } catch {}
-  return { completedExercises: [], questions: [] };
-}
-
-function saveProgress(state: ProgressState) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
 export function useProgress() {
-  const [state, setState] = useState<ProgressState>(loadProgress);
+  const { user } = useAuth();
+  const [state, setState] = useState<ProgressState>({ completedExercises: [] });
+  const [loading, setLoading] = useState(true);
 
+  // Load progress from DB
   useEffect(() => {
-    saveProgress(state);
-  }, [state]);
+    if (!user) {
+      setState({ completedExercises: [] });
+      setLoading(false);
+      return;
+    }
 
-  const completeExercise = useCallback((exerciseId: string) => {
-    setState((prev) => {
-      if (prev.completedExercises.includes(exerciseId)) return prev;
-      return { ...prev, completedExercises: [...prev.completedExercises, exerciseId] };
-    });
-  }, []);
+    const fetchProgress = async () => {
+      const { data } = await supabase
+        .from("user_progress")
+        .select("exercise_id")
+        .eq("user_id", user.id);
 
-  const submitQuestion = useCallback((exerciseId: string, question: string) => {
-    setState((prev) => ({
-      ...prev,
-      questions: [...prev.questions, { exerciseId, question, timestamp: Date.now() }],
-    }));
-  }, []);
+      setState({ completedExercises: data?.map((d) => d.exercise_id) ?? [] });
+      setLoading(false);
+    };
+    fetchProgress();
+  }, [user]);
+
+  const completeExercise = useCallback(
+    async (exerciseId: string) => {
+      if (!user) return;
+      setState((prev) => {
+        if (prev.completedExercises.includes(exerciseId)) return prev;
+        return { completedExercises: [...prev.completedExercises, exerciseId] };
+      });
+      await supabase.from("user_progress").insert({
+        user_id: user.id,
+        exercise_id: exerciseId,
+      });
+    },
+    [user]
+  );
+
+  const submitQuestion = useCallback(
+    async (exerciseId: string, question: string) => {
+      if (!user) return;
+      await supabase.from("questions").insert({
+        user_id: user.id,
+        exercise_id: exerciseId,
+        question_text: question,
+      });
+    },
+    [user]
+  );
 
   const isExerciseCompleted = useCallback(
     (exerciseId: string) => state.completedExercises.includes(exerciseId),
@@ -82,13 +100,8 @@ export function useProgress() {
 
   const unlockedAchievements = getUnlockedAchievements(totalCompleted, completedLevels, state.completedExercises);
 
-  const resetProgress = useCallback(() => {
-    setState({ completedExercises: [], questions: [] });
-  }, []);
-
   return {
     completedExercises: state.completedExercises,
-    questions: state.questions,
     completeExercise,
     submitQuestion,
     isExerciseCompleted,
@@ -100,7 +113,7 @@ export function useProgress() {
     totalExercises,
     completedLevels,
     unlockedAchievements,
-    resetProgress,
+    loading,
   };
 }
 

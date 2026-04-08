@@ -2,30 +2,42 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { levels } from "@/data/levels";
 import { useProgress } from "@/hooks/useProgress";
+import { useAuth } from "@/contexts/AuthContext";
 import { Header } from "@/components/Header";
 import { LevelCard } from "@/components/LevelCard";
 import { ExerciseView } from "@/components/ExerciseView";
 import { AchievementsPanel } from "@/components/AchievementsPanel";
-import { AdminPanel } from "@/components/AdminPanel";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, Settings } from "lucide-react";
+import { ArrowLeft, LogIn } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type View =
   | { type: "path" }
   | { type: "level"; levelId: number }
-  | { type: "exercise"; levelId: number; exerciseIndex: number }
-  | { type: "admin" };
+  | { type: "exercise"; levelId: number; exerciseIndex: number };
 
 const Course = () => {
   const [view, setView] = useState<View>({ type: "path" });
   const progress = useProgress();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
-  const renderContent = () => {
-    if (view.type === "admin") {
-      return <AdminPanel questions={progress.questions} onClose={() => setView({ type: "path" })} />;
-    }
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center px-4">
+        <div className="text-center">
+          <span className="text-6xl block mb-4">🏐</span>
+          <h1 className="text-2xl font-black text-foreground mb-2">Faça login para treinar</h1>
+          <p className="text-muted-foreground mb-6">Seu progresso será salvo automaticamente.</p>
+          <Button onClick={() => navigate("/auth")} className="btn-bounce card-shadow-primary gap-2">
+            <LogIn className="w-4 h-4" /> Entrar ou Criar Conta
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
+  const renderContent = () => {
     if (view.type === "exercise") {
       const level = levels.find((l) => l.id === view.levelId)!;
       const exercise = level.exercises[view.exerciseIndex];
@@ -144,16 +156,6 @@ const Course = () => {
         </div>
 
         <AchievementsPanel unlockedIds={progress.unlockedAchievements} />
-
-        <div className="text-center pt-4">
-          <button
-            onClick={() => setView({ type: "admin" })}
-            className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground btn-bounce font-semibold"
-          >
-            <Settings className="w-3.5 h-3.5" />
-            Painel do Professor
-          </button>
-        </div>
       </div>
     );
   };
