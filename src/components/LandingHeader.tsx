@@ -15,6 +15,7 @@ const navLinks = [
   { label: "Objetivo", href: "/objetivo" },
   { label: "Trajetória", href: "/trajetoria" },
   { label: "Validação", href: "/validacao" },
+  { label: "Feedback", href: "/feedback" },
 ];
 
 export function LandingHeader({ onStart }: LandingHeaderProps) {

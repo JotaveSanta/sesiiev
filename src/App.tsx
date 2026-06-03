@@ -11,6 +11,7 @@ import Objetivo from "./pages/Objetivo.tsx";
 import Trajetoria from "./pages/Trajetoria.tsx";
 import Validacao from "./pages/Validacao.tsx";
 import Admin from "./pages/Admin.tsx";
+import Feedback from "./pages/Feedback.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/trajetoria" element={<Trajetoria />} />
             <Route path="/validacao" element={<Validacao />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/feedback" element={<Feedback />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
