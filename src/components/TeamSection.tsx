@@ -34,9 +34,9 @@ const teamMembers = [
     delay: "0.9s",
   },
   {
-    name: "Membro da Equipe",
-    role: "Colaborador",
-    emoji: "⭐",
+    name: "Juliane Colombo Tidra",
+    role: "Professora • Educação Física (UNISINOS) • Especialista em Ciência do Esporte",
+    emoji: "🎓",
     color: "from-gold/80 to-gold/50",
     shadow: "card-shadow-gold",
     delay: "1.2s",
