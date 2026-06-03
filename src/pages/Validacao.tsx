@@ -26,7 +26,7 @@ const Validacao = () => {
             </div>
             <div>
               <h2 className="text-xl font-extrabold text-foreground">
-                Professora [Nome da Professora]
+                Professora Juliane Colombo Tidra
               </h2>
               <p className="text-muted-foreground text-sm">Orientadora do Projeto</p>
             </div>
@@ -38,8 +38,8 @@ const Validacao = () => {
               <div>
                 <h3 className="font-bold text-foreground text-sm">Formação Acadêmica</h3>
                 <p className="text-muted-foreground text-sm">
-                  Curso: Educação Física<br />
-                  Instituição: [Nome da Instituição]
+                  Graduada em Educação Física — UNISINOS<br />
+                  Especialista em Ciência do Esporte — UNISINOS
                 </p>
               </div>
             </div>
