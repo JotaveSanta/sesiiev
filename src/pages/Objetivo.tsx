@@ -58,7 +58,7 @@ const Objetivo = () => {
 
         <section className="mb-12">
           <h2 className="text-2xl font-extrabold text-foreground mb-6 text-center">
-            🏐 Benefícios Específicos do Voleibol
+            Benefícios Específicos do Voleibol
           </h2>
           <div className="grid md:grid-cols-3 gap-4">
             {volleyBenefits.map((b) => (
