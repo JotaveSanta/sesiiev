@@ -9,12 +9,12 @@ interface LandingHeaderProps {
 }
 
 const navLinks = [
-  { label: "Início", href: "/" },
+  { label: "Início", href: "/#hero" },
+  { label: "Objetivo", href: "/#objetivo" },
+  { label: "Trajetória", href: "/#trajetoria" },
   { label: "Equipe", href: "/#equipe" },
+  { label: "Validação", href: "/#validacao" },
   { label: "Curso", href: "/curso" },
-  { label: "Objetivo", href: "/objetivo" },
-  { label: "Trajetória", href: "/trajetoria" },
-  { label: "Validação", href: "/validacao" },
   { label: "Dúvidas e Feedback", href: "/feedback" },
 ];
 
