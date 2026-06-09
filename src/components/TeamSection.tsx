@@ -49,7 +49,7 @@ export function TeamSection() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-black text-foreground mb-2">
-            Nossa Equipe 🌴
+            Nossa Equipe
           </h2>
           <p className="text-muted-foreground">
             Conheça os criadores por trás do projeto
@@ -77,11 +77,6 @@ export function TeamSection() {
                     <User className="w-10 h-10 text-primary-foreground/80" />
                   </div>
                 </div>
-
-                {/* Emoji badge */}
-                <span className="absolute -top-2 -right-2 text-2xl animate-bounce-subtle">
-                  {member.emoji}
-                </span>
 
                 {/* Island shadow on "ground" */}
                 <div className="mx-auto mt-3 w-24 h-3 bg-foreground/5 rounded-full blur-sm" />

@@ -42,7 +42,7 @@ export function LandingHeader({ onStart }: LandingHeaderProps) {
     <header className="sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="font-black text-lg text-foreground tracking-tight">
-          🏐 IEV Voleibol
+          IEV Voleibol
         </Link>
 
         {/* Desktop nav */}
