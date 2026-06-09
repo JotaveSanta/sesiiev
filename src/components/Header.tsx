@@ -12,7 +12,7 @@ export function Header({ overallProgress, totalCompleted, totalExercises }: Head
       <div className="max-w-lg mx-auto px-4 py-3">
         <div className="flex items-center justify-between mb-2">
           <div>
-            <h1 className="font-black text-xl text-foreground tracking-tight">🏐 IEV Volleyball</h1>
+            <h1 className="font-black text-xl text-foreground tracking-tight">IEV Volleyball</h1>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-sm font-bold text-xp-blue">⚡ {totalCompleted} XP</span>
