@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import heroImage from "@/assets/hero-volleyball.png.asset.json";
+import heroImage from "@/assets/hero-brasil.png.asset.json";
 
 interface HeroSectionProps {
   onStart: () => void;
