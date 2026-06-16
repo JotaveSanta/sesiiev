@@ -13,6 +13,7 @@ const navLinks = [
   { label: "Objetivo", href: "/#objetivo" },
   { label: "Trajetória", href: "/#trajetoria" },
   { label: "Equipe", href: "/#equipe" },
+  { label: "Regras", href: "/#regras" },
   { label: "Validação", href: "/#validacao" },
   { label: "Curso", href: "/curso" },
   { label: "Dúvidas e Feedback", href: "/feedback" },
