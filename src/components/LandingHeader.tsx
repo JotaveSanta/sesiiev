@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Menu, X, LogIn, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface LandingHeaderProps {
   onStart: () => void;
@@ -58,6 +59,8 @@ export function LandingHeader({ onStart }: LandingHeaderProps) {
             </button>
           ))}
 
+          <ThemeToggle />
+
           {user ? (
             <div className="flex items-center gap-3">
               <span className="text-xs font-bold text-muted-foreground flex items-center gap-1">
@@ -75,9 +78,12 @@ export function LandingHeader({ onStart }: LandingHeaderProps) {
         </nav>
 
         {/* Mobile hamburger */}
-        <button className="lg:hidden text-foreground" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button className="text-foreground" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

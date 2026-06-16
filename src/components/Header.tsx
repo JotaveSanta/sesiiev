@@ -1,4 +1,5 @@
 import { Instagram } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface HeaderProps {
   overallProgress: number;
@@ -16,6 +17,7 @@ export function Header({ overallProgress, totalCompleted, totalExercises }: Head
           </div>
           <div className="flex items-center gap-3">
             <span className="text-sm font-bold text-xp-blue">⚡ {totalCompleted} XP</span>
+            <ThemeToggle />
             <a
               href="https://instagram.com/iev_sesi"
               target="_blank"
