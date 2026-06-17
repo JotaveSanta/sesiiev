@@ -1,23 +1,35 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Menu, X, LogIn, LogOut, User } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface LandingHeaderProps {
   onStart: () => void;
 }
 
-const navLinks = [
+// Navegação principal — mantida enxuta para um visual profissional.
+// "Sobre o projeto" agrupa as páginas institucionais (Objetivo, Trajetória, Equipe, Validação)
+// em um único menu dropdown, evitando poluição na barra superior.
+const primaryLinks = [
   { label: "Início", href: "/#hero" },
+  { label: "Regras", href: "/#regras" },
+  { label: "Curso", href: "/curso" },
+  { label: "Feedback", href: "/feedback" },
+];
+
+const aboutLinks = [
   { label: "Objetivo", href: "/#objetivo" },
   { label: "Trajetória", href: "/#trajetoria" },
   { label: "Equipe", href: "/#equipe" },
-  { label: "Regras", href: "/#regras" },
   { label: "Validação", href: "/#validacao" },
-  { label: "Curso", href: "/curso" },
-  { label: "Dúvidas e Feedback", href: "/feedback" },
 ];
 
 export function LandingHeader({ onStart }: LandingHeaderProps) {
@@ -49,7 +61,34 @@ export function LandingHeader({ onStart }: LandingHeaderProps) {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-5">
-          {navLinks.map((link) => (
+          {primaryLinks.slice(0, 1).map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleNav(link.href)}
+              className="text-sm font-bold text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </button>
+          ))}
+
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-bold text-muted-foreground hover:text-foreground transition-colors outline-none">
+              Sobre <ChevronDown className="w-3.5 h-3.5" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="bg-card">
+              {aboutLinks.map((link) => (
+                <DropdownMenuItem
+                  key={link.href}
+                  onClick={() => handleNav(link.href)}
+                  className="font-semibold cursor-pointer"
+                >
+                  {link.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {primaryLinks.slice(1).map((link) => (
             <button
               key={link.href}
               onClick={() => handleNav(link.href)}
@@ -89,7 +128,32 @@ export function LandingHeader({ onStart }: LandingHeaderProps) {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="lg:hidden border-t border-border bg-card px-4 py-4 space-y-3 animate-fade-in">
-          {navLinks.map((link) => (
+          {primaryLinks.slice(0, 1).map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleNav(link.href)}
+              className="block w-full text-left text-sm font-bold text-muted-foreground hover:text-foreground"
+            >
+              {link.label}
+            </button>
+          ))}
+
+          <div className="pt-1">
+            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground/60 mb-2">Sobre</p>
+            <div className="space-y-2 pl-2 border-l-2 border-border">
+              {aboutLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => handleNav(link.href)}
+                  className="block w-full text-left text-sm font-semibold text-muted-foreground hover:text-foreground"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {primaryLinks.slice(1).map((link) => (
             <button
               key={link.href}
               onClick={() => handleNav(link.href)}
