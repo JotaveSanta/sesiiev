@@ -5,6 +5,7 @@ import { TeamSection } from "@/components/TeamSection";
 import { ObjetivoSection } from "@/components/ObjetivoSection";
 import { TrajetoriaSection } from "@/components/TrajetoriaSection";
 import { RulesSection } from "@/components/RulesSection";
+import { AthletesSection } from "@/components/AthletesSection";
 import { ValidacaoSection } from "@/components/ValidacaoSection";
 import { AboutSection } from "@/components/AboutSection";
 import { Footer } from "@/components/Footer";
@@ -21,6 +22,7 @@ const Landing = () => {
       <TrajetoriaSection />
       <TeamSection />
       <RulesSection />
+      <AthletesSection />
       <ValidacaoSection />
       <AboutSection />
       <Footer />
