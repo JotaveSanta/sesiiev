@@ -158,27 +158,27 @@ export const levels: Level[] = [
   },
 
   // ══════════════════════════════════════════════════════════════════════════
-  // NÍVEL 6 — Cortada
+  // NÍVEL 6 — Ataque
   // ══════════════════════════════════════════════════════════════════════════
   {
     id: 6,
-    title: "Cortada",
-    description: "Aprenda o ataque mais poderoso do vôlei",
+    title: "Ataque",
+    description: "Aprenda o fundamento mais poderoso do vôlei",
     icon: "⚡",
     color: "secondary",
     exercises: [
       // >>> AULA 6-1: Passada de Ataque
-      { id: "6-1", title: "Passada de Ataque", description: "Aprenda as 3 passadas da aproximação para a cortada.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_1", type: "exercise" },
+      { id: "6-1", title: "Passada de Ataque", description: "Aprenda as 3 passadas da aproximação para o ataque.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_1", type: "exercise" },
       // >>> AULA 6-2: Salto e Alcance
       { id: "6-2", title: "Salto e Alcance", description: "Pratique o salto vertical e o ponto mais alto de contato.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_2", type: "exercise" },
-      // >>> AULA 6-3: Cortada sem Bola
-      { id: "6-3", title: "Cortada sem Bola", description: "Execute o movimento completo da cortada sem bola para fixar a técnica.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_3", type: "exercise" },
-      // >>> AULA 6-4: Cortada com Levantamento
-      { id: "6-4", title: "Cortada com Levantamento", description: "Pratique a cortada com um levantador, focando no timing.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_4", type: "exercise" },
-      // >>> AULA 6-5: Cortada Diagonal e Paralela
-      { id: "6-5", title: "Cortada Diagonal e Paralela", description: "Aprenda a direcionar a cortada para diferentes zonas da quadra.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_5", type: "exercise" },
-      // >>> DESAFIO 6-6: 5 Cortadas Vencedoras
-      { id: "6-6", title: "Desafio: 5 Cortadas Vencedoras", description: "Acerte 5 cortadas que toquem o chão da quadra adversária!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_6_6", type: "challenge" },
+      // >>> AULA 6-3: Ataque sem Bola
+      { id: "6-3", title: "Ataque sem Bola", description: "Execute o movimento completo do ataque sem bola para fixar a técnica.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_3", type: "exercise" },
+      // >>> AULA 6-4: Ataque com Levantamento
+      { id: "6-4", title: "Ataque com Levantamento", description: "Pratique o ataque com um levantador, focando no timing.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_4", type: "exercise" },
+      // >>> AULA 6-5: Ataque Diagonal e Paralelo
+      { id: "6-5", title: "Ataque Diagonal e Paralelo", description: "Aprenda a direcionar o ataque para diferentes zonas da quadra.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_5", type: "exercise" },
+      // >>> DESAFIO 6-6: 5 Ataques Vencedores
+      { id: "6-6", title: "Desafio: 5 Ataques Vencedores", description: "Acerte 5 ataques que toquem o chão da quadra adversária!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_6_6", type: "challenge" },
     ],
   },
 
