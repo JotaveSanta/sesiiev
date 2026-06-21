@@ -7,8 +7,6 @@ import central from "@/assets/atleta-central.jpg";
 import libero from "@/assets/atleta-libero.jpg";
 import tecnico from "@/assets/atleta-tecnico.jpg";
 
-// ⚠️ As imagens são ilustrações estilizadas representando cada posição.
-// Não são fotografias reais dos atletas mencionados.
 const athletes = [
   {
     name: "Bruno Rezende (Bruninho)",
