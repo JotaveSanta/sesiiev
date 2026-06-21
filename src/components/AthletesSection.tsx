@@ -76,7 +76,7 @@ export function AthletesSection() {
               <div className={`relative aspect-square bg-gradient-to-br ${a.accent}`}>
                 <img
                   src={a.image}
-                  alt={`Ilustração representando ${a.name}, ${a.position} da seleção brasileira`}
+                  alt={`Foto de ${a.name}, ${a.position} da seleção brasileira`}
                   loading="lazy"
                   width={512}
                   height={512}
@@ -93,10 +93,6 @@ export function AthletesSection() {
             </Card>
           ))}
         </div>
-
-        <p className="text-xs text-center text-muted-foreground/60 mt-8 italic">
-          As imagens são ilustrações estilizadas representando cada posição, não fotografias reais.
-        </p>
       </div>
     </section>
   );
