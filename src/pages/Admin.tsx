@@ -30,10 +30,19 @@ const Admin = () => {
   const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionRow[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     if (!user) return;
     const fetchQuestions = async () => {
+      // Acesso de professor é validado no banco (tabela de papéis) — aqui só ajustamos a UI
+      const { data: roles } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user.id)
+        .eq("role", "admin");
+      setIsAdmin(!!roles?.length);
+
       const { data: questionsData } = await supabase
         .from("questions")
         .select("*")
