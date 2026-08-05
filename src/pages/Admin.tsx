@@ -85,15 +85,28 @@ const Admin = () => {
     );
   }
 
+  if (!loading && !isAdmin) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center max-w-md px-4">
+          <h1 className="text-2xl font-black text-foreground mb-2">Acesso restrito</h1>
+          <p className="text-muted-foreground">
+            Este painel é exclusivo para professores. Solicite a liberação do seu acesso à coordenação.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <LandingHeader onStart={() => navigate("/curso")} />
       <main className="max-w-3xl mx-auto px-4 py-12">
         <div className="text-center mb-8">
-          <span className="text-5xl block mb-4">📬</span>
           <h1 className="text-3xl font-black text-foreground">Painel de Perguntas</h1>
           <p className="text-muted-foreground mt-2">Visualize e gerencie as dúvidas dos alunos</p>
         </div>
+
 
         {loading ? (
           <p className="text-center text-muted-foreground">Carregando...</p>
