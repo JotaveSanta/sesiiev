@@ -38,6 +38,17 @@ interface AuditRow {
   created_at: string;
 }
 
+interface FeedbackRow {
+  id: string;
+  type: string;
+  name: string;
+  email: string;
+  message: string;
+  synced_to_sheet: boolean;
+  created_at: string;
+}
+
+
 function getExerciseTitle(exerciseId: string): string {
   for (const level of levels) {
     const ex = level.exercises.find((e) => e.id === exerciseId);
