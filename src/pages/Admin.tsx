@@ -247,11 +247,15 @@ const Admin = () => {
             onValueChange={(v) => {
               if (v === "papeis") loadMembers();
               if (v === "auditoria") loadAuditLogs();
+              if (v === "envios") loadFeedback();
             }}
           >
-            <TabsList className="w-full grid grid-cols-3 rounded-2xl h-auto p-1">
+            <TabsList className="w-full grid grid-cols-4 rounded-2xl h-auto p-1">
               <TabsTrigger value="duvidas" className="rounded-xl py-2 font-bold">
                 Dúvidas
+              </TabsTrigger>
+              <TabsTrigger value="envios" className="rounded-xl py-2 font-bold">
+                Envios
               </TabsTrigger>
               <TabsTrigger value="papeis" className="rounded-xl py-2 font-bold">
                 Papéis
@@ -260,6 +264,41 @@ const Admin = () => {
                 Auditoria
               </TabsTrigger>
             </TabsList>
+
+            <TabsContent value="envios" className="mt-6">
+              {feedback.length === 0 ? (
+                <p className="text-center text-muted-foreground py-8">
+                  Nenhum envio do formulário de Dúvidas & Feedback ainda.
+                </p>
+              ) : (
+                <div className="space-y-3">
+                  {feedback.map((f) => (
+                    <div key={f.id} className="bg-card rounded-2xl p-5 card-shadow">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <span className="text-xs font-bold text-primary">
+                          {f.type === "video" ? "Vídeo (link)" : "Dúvida"}
+                        </span>
+                        <span className="text-xs text-muted-foreground">•</span>
+                        <span className="text-xs text-muted-foreground">{f.name}</span>
+                        <span className="text-xs text-muted-foreground">•</span>
+                        <span className="text-xs text-muted-foreground break-all">{f.email}</span>
+                        <span className="text-xs text-muted-foreground">•</span>
+                        <span className="text-xs text-muted-foreground">
+                          {new Date(f.created_at).toLocaleString("pt-BR")}
+                        </span>
+                        {!f.synced_to_sheet && (
+                          <span className="text-xs font-bold text-destructive">
+                            (não sincronizado com a planilha)
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-foreground text-sm break-words">{f.message}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </TabsContent>
+
 
             <TabsContent value="duvidas" className="mt-6">
               {questions.length === 0 ? (
