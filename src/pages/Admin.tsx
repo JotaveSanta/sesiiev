@@ -150,6 +150,18 @@ const Admin = () => {
     await logAudit("admin.audit.viewed");
   }, []);
 
+  const loadFeedback = useCallback(async () => {
+    const { data } = await supabase
+      .from("feedback_submissions")
+      .select("id, type, name, email, message, synced_to_sheet, created_at")
+      .order("created_at", { ascending: false })
+      .limit(200);
+    setFeedback((data ?? []) as FeedbackRow[]);
+    await logAudit("admin.feedback.viewed");
+  }, []);
+
+
+
   const toggleAnswered = async (id: string, current: boolean) => {
     const { error } = await supabase.from("questions").update({ answered: !current }).eq("id", id);
     if (error) {
