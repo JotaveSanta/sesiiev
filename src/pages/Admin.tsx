@@ -62,6 +62,8 @@ const ACTION_LABELS: Record<string, string> = {
   "admin.questions.viewed": "Visualizou a lista de dúvidas",
   "admin.roles.viewed": "Visualizou a gestão de papéis",
   "admin.audit.viewed": "Visualizou o log de auditoria",
+  "admin.feedback.viewed": "Visualizou os envios de dúvidas e vídeos",
+
   "question.marked_answered": "Marcou dúvida como respondida",
   "question.marked_unanswered": "Marcou dúvida como não respondida",
   "role.granted": "Concedeu papel",
