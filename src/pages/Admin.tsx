@@ -74,6 +74,8 @@ const Admin = () => {
   const [questions, setQuestions] = useState<QuestionRow[]>([]);
   const [members, setMembers] = useState<MemberRow[]>([]);
   const [auditLogs, setAuditLogs] = useState<AuditRow[]>([]);
+  const [feedback, setFeedback] = useState<FeedbackRow[]>([]);
+
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
 
