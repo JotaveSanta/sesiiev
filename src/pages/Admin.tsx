@@ -72,7 +72,7 @@ const ACTION_LABELS: Record<string, string> = {
 
 const Admin = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const [questions, setQuestions] = useState<QuestionRow[]>([]);
   const [members, setMembers] = useState<MemberRow[]>([]);
   const [auditLogs, setAuditLogs] = useState<AuditRow[]>([]);
@@ -82,8 +82,14 @@ const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    if (!user) return;
+    if (authLoading) return;
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+    let active = true;
     const init = async () => {
+     try {
       // Acesso de professor é validado no banco (tabela de papéis) — aqui só ajustamos a UI
       const { data: roles } = await supabase
         .from("user_roles")
@@ -94,7 +100,6 @@ const Admin = () => {
       setIsAdmin(admin);
 
       if (!admin) {
-        setLoading(false);
         return;
       }
 
@@ -121,10 +126,18 @@ const Admin = () => {
         });
       }
 
-      setLoading(false);
+     } catch (e) {
+        console.error("Falha ao carregar o painel:", e);
+        toast.error("Não foi possível carregar os dados do painel.");
+      } finally {
+        if (active) setLoading(false);
+      }
     };
     init();
-  }, [user]);
+    return () => {
+      active = false;
+    };
+  }, [user, authLoading]);
 
   const loadMembers = useCallback(async () => {
     const [{ data: profilesData }, { data: rolesData }] = await Promise.all([
@@ -203,6 +216,14 @@ const Admin = () => {
       prev.map((m) => (m.user_id === member.user_id ? { ...m, isAdmin: !m.isAdmin } : m))
     );
   };
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-muted-foreground">Carregando...</p>
+      </div>
+    );
+  }
 
   if (!user) {
     return (
