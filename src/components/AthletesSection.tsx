@@ -2,8 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import levantador from "@/assets/atleta-levantador.jpg";
 import oposto from "@/assets/atleta-oposto.jpg";
-import ponteiro from "@/assets/atleta-ponteiro.jpg";
-import central from "@/assets/atleta-central.jpg";
+import ponteira from "@/assets/atleta-ponteira.jpg";
+import central from "@/assets/atleta-central-fem.jpg";
 import libero from "@/assets/atleta-libero.jpg";
 import tecnico from "@/assets/atleta-tecnico.jpg";
 
@@ -23,17 +23,17 @@ const athletes = [
     accent: "from-yellow-500 to-orange-500",
   },
   {
-    name: "Ricardo Lucarelli",
-    position: "Ponteiro",
-    image: ponteiro,
-    bio: "Ponteiro versátil, campeão olímpico no Rio 2016. Referência em recepção e ataque, tornou-se ídolo da nova geração.",
+    name: "Ana Cristina de Souza",
+    position: "Ponteira",
+    image: ponteira,
+    bio: "Ponteira da seleção brasileira feminina, destaque em ataque e recepção. Medalhista olímpica em Tóquio 2020 e referência da nova geração.",
     accent: "from-green-500 to-emerald-500",
   },
   {
-    name: "Lucão (Lucas Saatkamp)",
+    name: "Thaísa Menezes",
     position: "Central",
     image: central,
-    bio: "Gigante de 2,07m, um dos melhores bloqueadores do mundo. Medalhista olímpico e referência defensiva da seleção brasileira.",
+    bio: "Bicampeã olímpica (Pequim 2008 e Londres 2012), uma das melhores centrais da história. Referência em bloqueio e leitura de jogo.",
     accent: "from-purple-500 to-fuchsia-500",
   },
   {
@@ -76,7 +76,7 @@ export function AthletesSection() {
               <div className={`relative aspect-square bg-gradient-to-br ${a.accent}`}>
                 <img
                   src={a.image}
-                  alt={`Foto de ${a.name}, ${a.position} da seleção brasileira`}
+                  alt={`Retrato de ${a.name}, ${a.position} da seleção brasileira`}
                   loading="lazy"
                   width={512}
                   height={512}
