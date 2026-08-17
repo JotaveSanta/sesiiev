@@ -25,48 +25,55 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
+    let active = true;
 
-        if (session?.user) {
+    // IMPORTANTE: nunca fazer chamadas ao banco com "await" dentro deste callback
+    // (isso travava o cliente e deixava o painel carregando pra sempre).
+    const fetchProfile = (u: User) => {
+      setTimeout(async () => {
+        try {
           const { data } = await supabase
             .from("profiles")
             .select("display_name")
-            .eq("user_id", session.user.id)
-            .single();
-          setDisplayName(data?.display_name ?? session.user.email ?? null);
-        } else {
-          setDisplayName(null);
+            .eq("user_id", u.id)
+            .maybeSingle();
+          if (active) setDisplayName(data?.display_name ?? u.email ?? null);
+        } catch {
+          if (active) setDisplayName(u.email ?? null);
         }
-        setLoading(false);
-      }
-    );
+      }, 0);
+    };
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
-        supabase
-          .from("profiles")
-          .select("display_name")
-          .eq("user_id", session.user.id)
-          .single()
-          .then(({ data }) => {
-            setDisplayName(data?.display_name ?? session.user.email ?? null);
-            setLoading(false);
-          });
+        fetchProfile(session.user);
       } else {
-        setLoading(false);
+        setDisplayName(null);
       }
+      setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!active) return;
+      setSession(session);
+      setUser(session?.user ?? null);
+      if (session?.user) fetchProfile(session.user);
+      setLoading(false);
+    });
+
+    return () => {
+      active = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signOut = async () => {
     await supabase.auth.signOut();
+    setSession(null);
+    setUser(null);
+    setDisplayName(null);
   };
 
   return (
