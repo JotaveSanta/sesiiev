@@ -2,8 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import levantador from "@/assets/atleta-levantador.jpg";
 import oposto from "@/assets/atleta-oposto.jpg";
-import ponteira from "@/assets/atleta-ponteira.jpg";
-import central from "@/assets/atleta-central-fem.jpg";
+import ponteiraAsset from "@/assets/atleta-ana-cristina.png.asset.json";
+import centralAsset from "@/assets/atleta-thaisa.png.asset.json";
 import libero from "@/assets/atleta-libero.jpg";
 import tecnico from "@/assets/atleta-tecnico.jpg";
 
@@ -25,14 +25,14 @@ const athletes = [
   {
     name: "Ana Cristina de Souza",
     position: "Ponteira",
-    image: ponteira,
+    image: ponteiraAsset.url,
     bio: "Ponteira da seleção brasileira feminina, destaque em ataque e recepção. Medalhista olímpica em Tóquio 2020 e referência da nova geração.",
     accent: "from-green-500 to-emerald-500",
   },
   {
-    name: "Thaísa Menezes",
+    name: "Thaísa Daher",
     position: "Central",
-    image: central,
+    image: centralAsset.url,
     bio: "Bicampeã olímpica (Pequim 2008 e Londres 2012), uma das melhores centrais da história. Referência em bloqueio e leitura de jogo.",
     accent: "from-purple-500 to-fuchsia-500",
   },
