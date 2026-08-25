@@ -21,6 +21,7 @@ interface LandingHeaderProps {
 const primaryLinks = [
   { label: "Início", href: "/#hero" },
   { label: "Regras", href: "/#regras" },
+  { label: "Sistema 5x1", href: "/sistema-5x1" },
   { label: "Atletas", href: "/#atletas" },
   { label: "Curso", href: "/curso" },
   { label: "Feedback", href: "/feedback" },
