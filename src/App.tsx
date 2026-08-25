@@ -12,6 +12,7 @@ import Trajetoria from "./pages/Trajetoria.tsx";
 import Validacao from "./pages/Validacao.tsx";
 import Admin from "./pages/Admin.tsx";
 import Feedback from "./pages/Feedback.tsx";
+import Sistema51 from "./pages/Sistema51.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
