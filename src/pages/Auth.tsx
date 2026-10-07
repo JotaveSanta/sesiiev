@@ -5,6 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { Eye, EyeOff } from "lucide-react";
 
 /** Traduz e simplifica as mensagens de erro do serviço de autenticação. */
 function traduzErro(message: string): string {
@@ -34,13 +35,50 @@ const Auth = () => {
   const [displayName, setDisplayName] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailEnviado, setEmailEnviado] = useState(false);
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+  // Modo "redefinir senha": ativado quando o usuário chega pelo link do email.
+  const [redefinindo, setRedefinindo] = useState(false);
+  const [novaSenha, setNovaSenha] = useState("");
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
 
-  // Se já estiver logado, não faz sentido ficar nesta tela.
+  // Detecta o link de recuperação de senha: o Supabase emite o evento
+  // PASSWORD_RECOVERY quando o usuário abre o link enviado por email.
   useEffect(() => {
-    if (!authLoading && user) navigate("/curso", { replace: true });
-  }, [user, authLoading, navigate]);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") setRedefinindo(true);
+    });
+    // Fallback: alguns links chegam com type=recovery no hash da URL.
+    if (window.location.hash.includes("type=recovery")) setRedefinindo(true);
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // Se já estiver logado (e NÃO estiver redefinindo senha), vai direto ao curso.
+  useEffect(() => {
+    if (!authLoading && user && !redefinindo) navigate("/curso", { replace: true });
+  }, [user, authLoading, redefinindo, navigate]);
+
+  const salvarNovaSenha = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loading) return;
+    if (novaSenha.length < 8) {
+      toast.error("A nova senha precisa ter no mínimo 8 caracteres.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.updateUser({ password: novaSenha });
+      if (error) {
+        toast.error(traduzErro(error.message));
+        return;
+      }
+      toast.success("Senha redefinida com sucesso!");
+      setRedefinindo(false);
+      navigate("/curso", { replace: true });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
