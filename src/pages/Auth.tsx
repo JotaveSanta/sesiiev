@@ -5,6 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { Eye, EyeOff } from "lucide-react";
 
 /** Traduz e simplifica as mensagens de erro do serviço de autenticação. */
 function traduzErro(message: string): string {
@@ -34,13 +35,50 @@ const Auth = () => {
   const [displayName, setDisplayName] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailEnviado, setEmailEnviado] = useState(false);
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+  // Modo "redefinir senha": ativado quando o usuário chega pelo link do email.
+  const [redefinindo, setRedefinindo] = useState(false);
+  const [novaSenha, setNovaSenha] = useState("");
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
 
-  // Se já estiver logado, não faz sentido ficar nesta tela.
+  // Detecta o link de recuperação de senha: o Supabase emite o evento
+  // PASSWORD_RECOVERY quando o usuário abre o link enviado por email.
   useEffect(() => {
-    if (!authLoading && user) navigate("/curso", { replace: true });
-  }, [user, authLoading, navigate]);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") setRedefinindo(true);
+    });
+    // Fallback: alguns links chegam com type=recovery no hash da URL.
+    if (window.location.hash.includes("type=recovery")) setRedefinindo(true);
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // Se já estiver logado (e NÃO estiver redefinindo senha), vai direto ao curso.
+  useEffect(() => {
+    if (!authLoading && user && !redefinindo) navigate("/curso", { replace: true });
+  }, [user, authLoading, redefinindo, navigate]);
+
+  const salvarNovaSenha = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loading) return;
+    if (novaSenha.length < 8) {
+      toast.error("A nova senha precisa ter no mínimo 8 caracteres.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.updateUser({ password: novaSenha });
+      if (error) {
+        toast.error(traduzErro(error.message));
+        return;
+      }
+      toast.success("Senha redefinida com sucesso!");
+      setRedefinindo(false);
+      navigate("/curso", { replace: true });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -125,7 +163,42 @@ const Auth = () => {
           </p>
         </div>
 
-        {emailEnviado && !isLogin ? (
+        {redefinindo ? (
+          <form onSubmit={salvarNovaSenha} className="bg-card rounded-2xl p-6 card-shadow space-y-4">
+            <h2 className="font-black text-lg text-foreground text-center">Defina sua nova senha</h2>
+            <div>
+              <label className="text-sm font-bold text-foreground block mb-1">Nova senha</label>
+              <div className="relative">
+                <Input
+                  type={mostrarSenha ? "text" : "password"}
+                  placeholder="••••••••"
+                  value={novaSenha}
+                  onChange={(e) => setNovaSenha(e.target.value)}
+                  autoComplete="new-password"
+                  required
+                  minLength={8}
+                  className="rounded-xl pr-11"
+                />
+                <button
+                  type="button"
+                  onClick={() => setMostrarSenha(!mostrarSenha)}
+                  aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  {mostrarSenha ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                </button>
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">Mínimo de 8 caracteres.</p>
+            </div>
+            <Button
+              type="submit"
+              disabled={loading}
+              className="w-full h-12 text-base font-bold rounded-2xl btn-bounce card-shadow-primary"
+            >
+              {loading ? "Salvando..." : "Salvar nova senha"}
+            </Button>
+          </form>
+        ) : emailEnviado && !isLogin ? (
           <div className="bg-card rounded-2xl p-6 card-shadow text-center space-y-4">
             <h2 className="font-black text-lg text-foreground">Confirme seu email</h2>
             <p className="text-sm text-muted-foreground">
@@ -173,16 +246,26 @@ const Auth = () => {
 
             <div>
               <label className="text-sm font-bold text-foreground block mb-1">Senha</label>
-              <Input
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete={isLogin ? "current-password" : "new-password"}
-                required
-                minLength={isLogin ? 6 : 8}
-                className="rounded-xl"
-              />
+              <div className="relative">
+                <Input
+                  type={mostrarSenha ? "text" : "password"}
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete={isLogin ? "current-password" : "new-password"}
+                  required
+                  minLength={isLogin ? 6 : 8}
+                  className="rounded-xl pr-11"
+                />
+                <button
+                  type="button"
+                  onClick={() => setMostrarSenha(!mostrarSenha)}
+                  aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  {mostrarSenha ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                </button>
+              </div>
               {!isLogin && (
                 <p className="text-xs text-muted-foreground mt-1">
                   Mínimo de 8 caracteres. Evite senhas óbvias como "123456" ou "senha123".
