@@ -246,16 +246,26 @@ const Auth = () => {
 
             <div>
               <label className="text-sm font-bold text-foreground block mb-1">Senha</label>
-              <Input
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete={isLogin ? "current-password" : "new-password"}
-                required
-                minLength={isLogin ? 6 : 8}
-                className="rounded-xl"
-              />
+              <div className="relative">
+                <Input
+                  type={mostrarSenha ? "text" : "password"}
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete={isLogin ? "current-password" : "new-password"}
+                  required
+                  minLength={isLogin ? 6 : 8}
+                  className="rounded-xl pr-11"
+                />
+                <button
+                  type="button"
+                  onClick={() => setMostrarSenha(!mostrarSenha)}
+                  aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  {mostrarSenha ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                </button>
+              </div>
               {!isLogin && (
                 <p className="text-xs text-muted-foreground mt-1">
                   Mínimo de 8 caracteres. Evite senhas óbvias como "123456" ou "senha123".
