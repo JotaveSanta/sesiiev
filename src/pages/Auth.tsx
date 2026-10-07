@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// (busca do campo de senha principal abaixo)
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
