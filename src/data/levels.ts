@@ -68,17 +68,19 @@ export const levels: Level[] = [
     color: "secondary",
     exercises: [
       // >>> AULA 2-1: Posição dos Braços
-      { id: "2-1", title: "Posição dos Braços", description: "Aprenda a posição correta dos braços para a manchete: braços estendidos e juntos.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_1", type: "exercise" },
+      { id: "2-1", title: "Posição dos Braços", description: "Aprenda a posição correta dos braços para a manchete: braços estendidos e juntos.", videoUrl: "https://www.youtube.com/embed/LObT56HrKLU", type: "exercise" },
       // >>> AULA 2-2: Manchete Parada
-      { id: "2-2", title: "Manchete Parada", description: "Pratique a manchete sem se mover, focando no ângulo dos braços.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_2", type: "exercise" },
+      { id: "2-2", title: "Manchete Parada", description: "Pratique a manchete sem se mover, focando no ângulo dos braços.", videoUrl: "https://www.youtube.com/embed/iJ7fOnegCLY", type: "exercise" },
       // >>> AULA 2-3: Recepção de Saque
-      { id: "2-3", title: "Recepção de Saque", description: "Receba saques leves usando a manchete, direcionando a bola para o levantador.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_3", type: "exercise" },
+      { id: "2-3", title: "Recepção de Saque", description: "Receba saques leves usando a manchete, direcionando a bola para o levantador.", videoUrl: "https://www.youtube.com/embed/PZ3tc0JiNaU", type: "exercise" },
       // >>> AULA 2-4: Manchete Lateral
-      { id: "2-4", title: "Manchete Lateral", description: "Pratique manchetes com deslocamento lateral para melhorar sua cobertura de quadra.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_4", type: "exercise" },
+      { id: "2-4", title: "Manchete Lateral", description: "Pratique manchetes com deslocamento lateral para melhorar sua cobertura de quadra.", videoUrl: "https://www.youtube.com/embed/xcEc2Zp5heA", type: "exercise" },
       // >>> AULA 2-5: Manchete de Defesa
-      { id: "2-5", title: "Manchete de Defesa", description: "Simule situações de defesa recebendo bolas mais fortes com manchete.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_5", type: "exercise" },
-      // >>> DESAFIO 2-6: Rally de Manchete
-      { id: "2-6", title: "Desafio: Rally de Manchete", description: "Mantenha um rally de 15 manchetes com um parceiro!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_2_6", type: "challenge" },
+      { id: "2-5", title: "Manchete de Defesa", description: "Simule situações de defesa recebendo bolas mais fortes com manchete.", videoUrl: "https://www.youtube.com/embed/G7XKuh5_h_s", type: "exercise" },
+      // >>> DESAFIO 2-6: Manchete no Alvo (mudado conforme pedido)
+      // ATENÇÃO: não recebi o link do vídeo do desafio. Se estiver em uma das
+      // aulas acima, copie o link da aula aqui. Se tiver um vídeo próprio, cole aqui.
+      { id: "2-6", title: "Desafio: Manchete no Alvo", description: "Acerte a bola dentro de um alvo posicionado a 8 passos de distância usando a manchete!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_2_6", type: "challenge" },
     ],
   },
 
