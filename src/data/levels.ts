@@ -42,18 +42,18 @@ export const levels: Level[] = [
     icon: "🏐",
     color: "primary",
     exercises: [
-      // >>> AULA 1-1: Posição das Mãos
-      { id: "1-1", title: "Posição das Mãos", description: "Aprenda a posicionar as mãos corretamente para o toque por cima. Dedos abertos, formando um triângulo.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_1_1", type: "exercise" },
-      // >>> AULA 1-2: Toque Parado
-      { id: "1-2", title: "Toque Parado", description: "Pratique o toque sem deslocamento, focando na técnica dos dedos e extensão dos braços.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_1_2", type: "exercise" },
-      // >>> AULA 1-3: Toque contra a Parede
-      { id: "1-3", title: "Toque contra a Parede", description: "Execute toques contínuos contra a parede para desenvolver controle e consistência.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_1_3", type: "exercise" },
-      // >>> AULA 1-4: Toque em Dupla
-      { id: "1-4", title: "Toque em Dupla", description: "Troque toques com um parceiro a curta distância, mantendo a bola alta e controlada.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_1_4", type: "exercise" },
-      // >>> AULA 1-5: Toque com Deslocamento
-      { id: "1-5", title: "Toque com Deslocamento", description: "Pratique o toque se movimentando lateralmente na quadra.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_1_5", type: "exercise" },
-      // >>> DESAFIO 1-6: 20 Toques Seguidos
-      { id: "1-6", title: "Desafio: 20 Toques Seguidos", description: "Complete 20 toques consecutivos sem deixar a bola cair!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_1_6", type: "challenge" },
+      // >>> AULA 1-1: Posição das Mãos (vídeo: Aula 1 do Módulo de Toque)
+      { id: "1-1", title: "Posição das Mãos", description: "Aprenda a posicionar as mãos corretamente para o toque por cima. Dedos abertos, formando um triângulo.", videoUrl: "https://www.youtube.com/embed/LObT56HrKLU", type: "exercise" },
+      // >>> AULA 1-2: Toque Parado (vídeo: Aula 2 do Módulo de Toque)
+      { id: "1-2", title: "Toque Parado", description: "Pratique o toque sem deslocamento, focando na técnica dos dedos e extensão dos braços.", videoUrl: "https://www.youtube.com/embed/iJ7fOnegCLY", type: "exercise" },
+      // >>> AULA 1-3: Toque contra a Parede (vídeo: Aula 3 do Módulo de Toque)
+      { id: "1-3", title: "Toque contra a Parede", description: "Execute toques contínuos contra a parede para desenvolver controle e consistência.", videoUrl: "https://www.youtube.com/embed/PZ3tc0JiNaU", type: "exercise" },
+      // >>> AULA 1-4: Toque em Dupla (vídeo: Aula 4 do Módulo de Toque)
+      { id: "1-4", title: "Toque em Dupla", description: "Troque toques com um parceiro a curta distância, mantendo a bola alta e controlada.", videoUrl: "https://www.youtube.com/embed/xcEc2Zp5heA", type: "exercise" },
+      // >>> AULA 1-5: Toque com Deslocamento (vídeo: Aula 5 do Módulo de Toque)
+      { id: "1-5", title: "Toque com Deslocamento", description: "Pratique o toque se movimentando lateralmente na quadra.", videoUrl: "https://www.youtube.com/embed/G7XKuh5_h_s", type: "exercise" },
+      // >>> DESAFIO 1-6: Toque no Alvo (no vídeo, o desafio é acertar a bola dentro de um alvo a 8 passos)
+      { id: "1-6", title: "Desafio: Toque no Alvo", description: "Acerte a bola dentro de um alvo posicionado a 8 passos de distância usando o toque!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_1_6", type: "challenge" },
     ],
   },
 
@@ -68,19 +68,17 @@ export const levels: Level[] = [
     color: "secondary",
     exercises: [
       // >>> AULA 2-1: Posição dos Braços
-      { id: "2-1", title: "Posição dos Braços", description: "Aprenda a posição correta dos braços para a manchete: braços estendidos e juntos.", videoUrl: "https://www.youtube.com/embed/LObT56HrKLU", type: "exercise" },
+      { id: "2-1", title: "Posição dos Braços", description: "Aprenda a posição correta dos braços para a manchete: braços estendidos e juntos.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_1", type: "exercise" },
       // >>> AULA 2-2: Manchete Parada
-      { id: "2-2", title: "Manchete Parada", description: "Pratique a manchete sem se mover, focando no ângulo dos braços.", videoUrl: "https://www.youtube.com/embed/iJ7fOnegCLY", type: "exercise" },
+      { id: "2-2", title: "Manchete Parada", description: "Pratique a manchete sem se mover, focando no ângulo dos braços.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_2", type: "exercise" },
       // >>> AULA 2-3: Recepção de Saque
-      { id: "2-3", title: "Recepção de Saque", description: "Receba saques leves usando a manchete, direcionando a bola para o levantador.", videoUrl: "https://www.youtube.com/embed/PZ3tc0JiNaU", type: "exercise" },
+      { id: "2-3", title: "Recepção de Saque", description: "Receba saques leves usando a manchete, direcionando a bola para o levantador.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_3", type: "exercise" },
       // >>> AULA 2-4: Manchete Lateral
-      { id: "2-4", title: "Manchete Lateral", description: "Pratique manchetes com deslocamento lateral para melhorar sua cobertura de quadra.", videoUrl: "https://www.youtube.com/embed/xcEc2Zp5heA", type: "exercise" },
+      { id: "2-4", title: "Manchete Lateral", description: "Pratique manchetes com deslocamento lateral para melhorar sua cobertura de quadra.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_4", type: "exercise" },
       // >>> AULA 2-5: Manchete de Defesa
-      { id: "2-5", title: "Manchete de Defesa", description: "Simule situações de defesa recebendo bolas mais fortes com manchete.", videoUrl: "https://www.youtube.com/embed/G7XKuh5_h_s", type: "exercise" },
-      // >>> DESAFIO 2-6: Manchete no Alvo (mudado conforme pedido)
-      // ATENÇÃO: não recebi o link do vídeo do desafio. Se estiver em uma das
-      // aulas acima, copie o link da aula aqui. Se tiver um vídeo próprio, cole aqui.
-      { id: "2-6", title: "Desafio: Manchete no Alvo", description: "Acerte a bola dentro de um alvo posicionado a 8 passos de distância usando a manchete!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_2_6", type: "challenge" },
+      { id: "2-5", title: "Manchete de Defesa", description: "Simule situações de defesa recebendo bolas mais fortes com manchete.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_5", type: "exercise" },
+      // >>> DESAFIO 2-6: Rally de Manchete
+      { id: "2-6", title: "Desafio: Rally de Manchete", description: "Mantenha um rally de 15 manchetes com um parceiro!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_2_6", type: "challenge" },
     ],
   },
 
