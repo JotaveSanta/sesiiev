@@ -53,7 +53,7 @@ export const levels: Level[] = [
       // >>> AULA 1-5: Toque com Deslocamento (vídeo: Aula 5 do Módulo de Toque)
       { id: "1-5", title: "Toque com Deslocamento", description: "Pratique o toque se movimentando lateralmente na quadra.", videoUrl: "https://www.youtube.com/embed/G7XKuh5_h_s", type: "exercise" },
       // >>> DESAFIO 1-6: Toque no Alvo (no vídeo, o desafio é acertar a bola dentro de um alvo a 8 passos)
-      { id: "1-6", title: "Desafio: Toque no Alvo", description: "Acerte a bola dentro de um alvo posicionado a 8 passos de distância usando o toque!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_1_6", type: "challenge" },
+      { id: "1-6", title: "Desafio: Toque no Alvo", description: "Acerte a bola dentro de um alvo posicionado a 8 passos de distância usando o toque!", videoUrl: "https://www.youtube.com/embed/U5-A-mLm1vE", type: "challenge" },
     ],
   },
 
@@ -68,11 +68,11 @@ export const levels: Level[] = [
     color: "secondary",
     exercises: [
       // >>> AULA 2-1: Posição dos Braços
-      { id: "2-1", title: "Posição dos Braços", description: "Aprenda a posição correta dos braços para a manchete: braços estendidos e juntos.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_1", type: "exercise" },
+      { id: "2-1", title: "Posição dos Braços", description: "Aprenda a posição correta dos braços para a manchete: braços estendidos e juntos.", videoUrl: "https://www.youtube.com/embed/5UVjmV2kK9o", type: "exercise" },
       // >>> AULA 2-2: Manchete Parada
-      { id: "2-2", title: "Manchete Parada", description: "Pratique a manchete sem se mover, focando no ângulo dos braços.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_2", type: "exercise" },
+      { id: "2-2", title: "Manchete Parada", description: "Pratique a manchete sem se mover, focando no ângulo dos braços.", videoUrl: "https://www.youtube.com/embed/WuXPYHbo0c0", type: "exercise" },
       // >>> AULA 2-3: Recepção de Saque
-      { id: "2-3", title: "Recepção de Saque", description: "Receba saques leves usando a manchete, direcionando a bola para o levantador.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_3", type: "exercise" },
+      { id: "2-3", title: "Recepção de Saque", description: "Receba saques leves usando a manchete, direcionando a bola para o levantador.", videoUrl: "https://www.youtube.com/embed/JMwglOaBvnI", type: "exercise" },
       // >>> AULA 2-4: Manchete Lateral
       { id: "2-4", title: "Manchete Lateral", description: "Pratique manchetes com deslocamento lateral para melhorar sua cobertura de quadra.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_4", type: "exercise" },
       // >>> AULA 2-5: Manchete de Defesa
