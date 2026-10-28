@@ -12,7 +12,7 @@ const athletes = [
     name: "Bruno Rezende (Bruninho)",
     position: "Levantador",
     image: levantador,
-    bio: "Capitão da seleção brasileira e considerado um dos melhores levantadores do mundo. Bicampeão olímpico (Rio 2016 e Paris 2024 como atleta de referência).",
+    bio: "Levantador da seleção brasileira e um dos grandes nomes da posição. Campeão olímpico no Rio 2016 e medalhista de prata em Pequim 2008 e Londres 2012.",
     accent: "from-blue-500 to-cyan-500",
   },
   {

@@ -9,7 +9,7 @@ import { logAudit } from "@/lib/audit";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { CheckCircle, Circle, ShieldCheck, ShieldOff } from "lucide-react";
+import { CheckCircle, Circle, ShieldCheck, ShieldOff, ExternalLink } from "lucide-react";
 
 interface QuestionRow {
   id: string;
@@ -289,6 +289,14 @@ const Admin = () => {
             </TabsList>
 
             <TabsContent value="envios" className="mt-6">
+              <div className="mb-6 space-y-2">
+                <Button asChild variant="outline" className="gap-2">
+                  <a href="https://docs.google.com/spreadsheets/d/1Zb2ejSuVh5AFlKRL9FW4OqGa3sXxfL7iAJrYPaAOLOQ/edit" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4" /> Planilha de dúvidas e vídeos
+                  </a>
+                </Button>
+                <p className="text-sm text-muted-foreground">Os envios deste formulário também aparecem na aba Página1 da planilha.</p>
+              </div>
               {feedback.length === 0 ? (
                 <p className="text-center text-muted-foreground py-8">
                   Nenhum envio do formulário de Dúvidas & Feedback ainda.
@@ -324,6 +332,7 @@ const Admin = () => {
 
 
             <TabsContent value="duvidas" className="mt-6">
+              <p className="text-sm text-muted-foreground mb-4">As perguntas feitas dentro das aulas ficam neste painel; não são enviadas à planilha.</p>
               {questions.length === 0 ? (
                 <p className="text-center text-muted-foreground py-8">Nenhuma pergunta enviada ainda.</p>
               ) : (
