@@ -14,19 +14,26 @@ import { toast } from "sonner";
 interface QuestionDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSubmit: (question: string) => void;
+  onSubmit: (question: string) => Promise<boolean>;
   exerciseTitle: string;
 }
 
 export function QuestionDialog({ open, onOpenChange, onSubmit, exerciseTitle }: QuestionDialogProps) {
   const [question, setQuestion] = useState("");
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = () => {
-    if (!question.trim()) return;
-    onSubmit(question.trim());
+  const handleSubmit = async () => {
+    if (!question.trim() || sending) return;
+    setSending(true);
+    const ok = await onSubmit(question.trim());
+    setSending(false);
+    if (!ok) {
+      toast.error("Não foi possível enviar a pergunta. Tente novamente.");
+      return;
+    }
     setQuestion("");
     onOpenChange(false);
-    toast.success("Pergunta enviada com sucesso! 📩");
+    toast.success("Pergunta enviada com sucesso!");
   };
 
   return (
@@ -45,9 +52,9 @@ export function QuestionDialog({ open, onOpenChange, onSubmit, exerciseTitle }: 
           className="min-h-[120px] rounded-xl"
           maxLength={500}
         />
-        <Button onClick={handleSubmit} disabled={!question.trim()} className="rounded-2xl h-12 font-bold btn-bounce card-shadow-primary">
+        <Button onClick={handleSubmit} disabled={!question.trim() || sending} className="rounded-2xl h-12 font-bold btn-bounce card-shadow-primary">
           <Send className="w-4 h-4 mr-2" />
-          Enviar
+          {sending ? "Enviando..." : "Enviar"}
         </Button>
       </DialogContent>
     </Dialog>

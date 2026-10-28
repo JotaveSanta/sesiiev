@@ -42,8 +42,8 @@ const Feedback = () => {
       if (error) throw error;
       toast.success(
         tab === "duvida"
-          ? "Dúvida enviada com sucesso! 📩"
-          : "Link de vídeo enviado para feedback! 🎥",
+          ? "Dúvida enviada com sucesso!"
+          : "Link de vídeo enviado para feedback!",
       );
       setMessage("");
     } catch (e) {
@@ -59,7 +59,6 @@ const Feedback = () => {
       <LandingHeader onStart={() => navigate("/curso")} />
       <main className="flex-1 max-w-2xl w-full mx-auto px-4 py-12">
         <div className="text-center mb-8">
-          <span className="text-5xl block mb-3">💬</span>
           <h1 className="text-3xl font-black text-foreground">Dúvidas & Feedback</h1>
           <p className="text-muted-foreground mt-2">
             Envie sua dúvida ou um link de vídeo do seu treino para receber feedback dos professores.
@@ -135,7 +134,7 @@ const Feedback = () => {
 
           {tab === "video" && (
             <p className="text-xs text-muted-foreground text-center">
-              💡 Dica: faça upload no YouTube (não listado) ou Google Drive e cole o link aqui.
+              Dica: faça upload no YouTube (não listado) ou Google Drive e cole o link aqui.
             </p>
           )}
         </div>
