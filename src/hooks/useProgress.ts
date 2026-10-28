@@ -39,22 +39,26 @@ export function useProgress() {
         if (prev.completedExercises.includes(exerciseId)) return prev;
         return { completedExercises: [...prev.completedExercises, exerciseId] };
       });
-      await supabase.from("user_progress").insert({
+      const { error } = await supabase.from("user_progress").insert({
         user_id: user.id,
         exercise_id: exerciseId,
       });
+      if (error && error.code !== "23505") {
+        setState((prev) => ({ completedExercises: prev.completedExercises.filter((id) => id !== exerciseId) }));
+      }
     },
     [user]
   );
 
   const submitQuestion = useCallback(
     async (exerciseId: string, question: string) => {
-      if (!user) return;
-      await supabase.from("questions").insert({
+      if (!user) return false;
+      const { error } = await supabase.from("questions").insert({
         user_id: user.id,
         exercise_id: exerciseId,
         question_text: question,
       });
+      return !error;
     },
     [user]
   );

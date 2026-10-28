@@ -3,12 +3,13 @@ import { Exercise } from "@/data/levels";
 import { Button } from "@/components/ui/button";
 import { Check, MessageCircle, ArrowLeft, Trophy } from "lucide-react";
 import { QuestionDialog } from "@/components/QuestionDialog";
+import { isPlayableVideoUrl } from "@/lib/video";
 
 interface ExerciseViewProps {
   exercise: Exercise;
   isCompleted: boolean;
   onComplete: () => void;
-  onSubmitQuestion: (question: string) => void;
+  onSubmitQuestion: (question: string) => Promise<boolean>;
   onBack: () => void;
   exerciseNumber: number;
   totalExercises: number;
@@ -56,13 +57,15 @@ export function ExerciseView({
       <p className="text-muted-foreground mb-6 leading-relaxed">{exercise.description}</p>
 
       <div className="rounded-2xl overflow-hidden card-shadow mb-6 aspect-video bg-foreground/5">
-        <iframe
+        {isPlayableVideoUrl(exercise.videoUrl) ? <iframe
           src={exercise.videoUrl}
           title={exercise.title}
           className="w-full h-full"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        />
+        /> : <div className="w-full h-full flex items-center justify-center p-6 text-center">
+          <div><p className="font-black text-foreground text-lg">Vídeo em preparação</p><p className="text-sm text-muted-foreground mt-1">Esta aula será publicada em breve.</p></div>
+        </div>}
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3">
