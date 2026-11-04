@@ -1,10 +1,13 @@
 import { User } from "lucide-react";
+import joaoVitorAsset from "@/assets/equipe-joao-vitor.png.asset.json";
+import thomazAsset from "@/assets/equipe-thomaz.png.asset.json";
 
 const teamMembers = [
   {
     name: "João Vitor Santanna",
     role: "Desenvolvedor & Jogador",
     emoji: "🏐",
+    image: joaoVitorAsset.url,
     color: "from-primary to-primary/70",
     shadow: "card-shadow-primary",
     delay: "0s",
@@ -13,6 +16,7 @@ const teamMembers = [
     name: "Thomaz Porfirio de Oliveira",
     role: "Criador de Conteúdo",
     emoji: "📋",
+    image: thomazAsset.url,
     color: "from-secondary to-secondary/70",
     shadow: "card-shadow-secondary",
     delay: "0.3s",
@@ -73,8 +77,17 @@ export function TeamSection() {
                   className={`w-36 h-36 md:w-40 md:h-40 rounded-[2rem] bg-gradient-to-br ${member.color} ${member.shadow} flex items-center justify-center transition-transform group-hover:scale-105`}
                 >
                   {/* Avatar circle */}
-                  <div className="w-20 h-20 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center border-4 border-primary-foreground/30">
-                    <User className="w-10 h-10 text-primary-foreground/80" />
+                  <div className="w-20 h-20 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center border-4 border-primary-foreground/30 overflow-hidden">
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={`Foto de ${member.name}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <User className="w-10 h-10 text-primary-foreground/80" />
+                    )}
                   </div>
                 </div>
 
