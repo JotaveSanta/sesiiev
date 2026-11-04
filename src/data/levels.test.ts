@@ -16,13 +16,16 @@ describe("curriculum updates", () => {
     expect(levels.find((level) => level.id === 2)?.exercises.find((exercise) => exercise.type === "challenge")?.videoUrl).toBe("https://www.youtube.com/embed/kxAn8GCnzEw");
   });
 
-  it("combines the serve modules into one module with the two supplied lessons", () => {
+  it("combines the serve modules into one module with the five supplied lessons", () => {
     const serveModules = levels.filter((level) => level.title.startsWith("Saque"));
     expect(serveModules).toHaveLength(1);
     expect(serveModules[0]?.title).toBe("Saque");
     expect(serveModules[0]?.exercises.map((exercise) => exercise.videoUrl)).toEqual([
       "https://www.youtube.com/embed/J-kV_wa69Hw",
       "https://www.youtube.com/embed/zNbTDXDsP-c",
+      "https://www.youtube.com/embed/OBHs5I7u4AQ",
+      "https://www.youtube.com/embed/Mn9Uv-RdyUc",
+      "https://www.youtube.com/embed/OcJkD8xJqFE",
     ]);
   });
 
@@ -36,8 +39,8 @@ describe("curriculum updates", () => {
 
   it("awards course completion at the new total instead of 60", () => {
     const completedIds = levels.flatMap((level) => level.exercises.map((exercise) => exercise.id));
-    expect(completedIds).toHaveLength(49);
-    expect(getUnlockedAchievements(48, 8, completedIds.slice(0, -1))).not.toContain("all-done");
-    expect(getUnlockedAchievements(49, 9, completedIds)).toContain("all-done");
+    expect(completedIds).toHaveLength(52);
+    expect(getUnlockedAchievements(51, 8, completedIds.slice(0, -1))).not.toContain("all-done");
+    expect(getUnlockedAchievements(52, 9, completedIds)).toContain("all-done");
   });
 });
