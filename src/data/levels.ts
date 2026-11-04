@@ -95,6 +95,12 @@ export const levels: Level[] = [
       { id: "3-1", title: "Posicionamento — Saque por Baixo", description: "Aprenda o posicionamento e o movimento do saque por baixo.", videoUrl: "https://www.youtube.com/embed/J-kV_wa69Hw", type: "exercise" },
       // >>> AULA 3-2: Saque por Baixo para Jogo
       { id: "3-2", title: "Saque por Baixo para Jogo", description: "Saque a bola e faça ela percorrer uma distância de 9 passos.", videoUrl: "https://www.youtube.com/embed/zNbTDXDsP-c", type: "exercise" },
+      // >>> AULA 3-3: Posicionamento — Saque por Cima
+      { id: "3-3", title: "Posicionamento — Saque por Cima", description: "Aprenda o movimento e o posicionamento do saque por cima.", videoUrl: "https://www.youtube.com/embed/OBHs5I7u4AQ", type: "exercise" },
+      // >>> AULA 3-4: Saque por Cima para Jogo
+      { id: "3-4", title: "Saque por Cima para Jogo", description: "Saque a bola e faça ela percorrer uma distância de 9 metros.", videoUrl: "https://www.youtube.com/embed/Mn9Uv-RdyUc", type: "exercise" },
+      // >>> DESAFIO 3-5: Saque na Parede
+      { id: "3-5", title: "Desafio: Saque na Parede", description: "Saque acertando um ponto na altura de 2,43 m na parede, a uma distância de 9 metros (9 passos).", videoUrl: "https://www.youtube.com/embed/OcJkD8xJqFE", type: "challenge" },
     ],
   },
 
