@@ -12,7 +12,7 @@ const Validacao = () => {
       <main className="max-w-3xl mx-auto px-4 py-12">
         <div className="text-center mb-12 animate-fade-in">
           <span className="text-5xl block mb-4">🎓</span>
-          <h1 className="text-4xl font-black text-foreground mb-4">Validação da Professora</h1>
+          <h1 className="text-4xl font-black text-foreground mb-4">Validação Pedagógica</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Este projeto foi desenvolvido sob orientação e validação de uma profissional
             qualificada na área de Educação Física.
