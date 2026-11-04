@@ -1,5 +1,5 @@
 import { Lock, Check, ChevronRight } from "lucide-react";
-import { Level } from "@/data/levels";
+import { Level, levels } from "@/data/levels";
 
 interface LevelCardProps {
   level: Level;
@@ -50,7 +50,7 @@ export function LevelCard({ level, unlocked, completed, progress, onClick }: Lev
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-              Nível {level.id}
+              Nível {levels.findIndex((item) => item.id === level.id) + 1}
             </span>
             {completed && (
               <span className="text-xs font-bold text-primary bg-primary/15 px-2 py-0.5 rounded-full">
