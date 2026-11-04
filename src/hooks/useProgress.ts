@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { levels } from "@/data/levels";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
+import { getPreviousLevel, getActiveCompletedExercises, getUnlockedAchievements } from "@/lib/courseProgress";
 
 interface ProgressState {
   completedExercises: string[];
@@ -70,8 +71,8 @@ export function useProgress() {
 
   const isLevelUnlocked = useCallback(
     (levelId: number) => {
-      if (levelId === 1) return true;
-      const prevLevel = levels.find((l) => l.id === levelId - 1);
+      if (levelId === levels[0]?.id) return true;
+      const prevLevel = getPreviousLevel(levelId);
       if (!prevLevel) return false;
       return prevLevel.exercises.every((e) => state.completedExercises.includes(e.id));
     },
@@ -98,11 +99,12 @@ export function useProgress() {
   );
 
   const totalExercises = levels.reduce((acc, l) => acc + l.exercises.length, 0);
-  const totalCompleted = state.completedExercises.length;
+  const activeCompletedExercises = getActiveCompletedExercises(state.completedExercises);
+  const totalCompleted = activeCompletedExercises.length;
   const overallProgress = Math.round((totalCompleted / totalExercises) * 100);
   const completedLevels = levels.filter((l) => isLevelCompleted(l.id)).length;
 
-  const unlockedAchievements = getUnlockedAchievements(totalCompleted, completedLevels, state.completedExercises);
+  const unlockedAchievements = getUnlockedAchievements(totalCompleted, completedLevels, activeCompletedExercises);
 
   return {
     completedExercises: state.completedExercises,
@@ -121,15 +123,3 @@ export function useProgress() {
   };
 }
 
-function getUnlockedAchievements(totalCompleted: number, completedLevels: number, completedExercises: string[]) {
-  const unlocked: string[] = [];
-  if (totalCompleted >= 1) unlocked.push("first-exercise");
-  if (totalCompleted >= 5) unlocked.push("five-exercises");
-  if (totalCompleted >= 10) unlocked.push("ten-exercises");
-  if (totalCompleted >= 20) unlocked.push("twenty-exercises");
-  if (totalCompleted >= 30) unlocked.push("half-way");
-  if (totalCompleted >= 60) unlocked.push("all-done");
-  if (completedExercises.some((id) => id.endsWith("-6"))) unlocked.push("first-challenge");
-  if (completedLevels >= 5) unlocked.push("five-levels");
-  return unlocked;
-}

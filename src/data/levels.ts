@@ -28,7 +28,8 @@ export interface Level {
       Basta trocar "watch?v=" por "embed/".
    4) Mantenha as aspas " " ao redor do link e a vírgula no final da linha.
    5) Cada exercício tem um código (ex: 1-1, 1-2 ... 10-6) que indica
-      NÍVEL-EXERCÍCIO. O último de cada nível (X-6) é sempre o DESAFIO.
+      Os códigos são identificadores estáveis do progresso; não renumere ao retirar aulas.
+      O campo type identifica exercícios e desafios. Cada módulo pode ter quantidade diferente de aulas.
    ============================================================================ */
 
 export const levels: Level[] = [
@@ -74,61 +75,26 @@ export const levels: Level[] = [
       // >>> AULA 2-3: Recepção de Saque
       { id: "2-3", title: "Recepção de Saque", description: "Receba saques leves usando a manchete, direcionando a bola para o levantador.", videoUrl: "https://www.youtube.com/embed/JMwglOaBvnI", type: "exercise" },
       // >>> AULA 2-4: Manchete Lateral
-      { id: "2-4", title: "Manchete Lateral", description: "Pratique manchetes com deslocamento lateral para melhorar sua cobertura de quadra.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_4", type: "exercise" },
-      // >>> AULA 2-5: Manchete de Defesa
-      { id: "2-5", title: "Manchete de Defesa", description: "Simule situações de defesa recebendo bolas mais fortes com manchete.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_2_5", type: "exercise" },
+      { id: "2-4", title: "Manchete Lateral", description: "Pratique manchetes com deslocamento lateral para melhorar sua cobertura de quadra.", videoUrl: "https://www.youtube.com/embed/2va9RNc6Rt8", type: "exercise" },
       // >>> DESAFIO 2-6: Rally de Manchete
-      { id: "2-6", title: "Desafio: Rally de Manchete", description: "Mantenha um rally de 15 manchetes com um parceiro!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_2_6", type: "challenge" },
+      { id: "2-6", title: "Desafio: Rally de Manchete", description: "Mantenha um rally de 15 manchetes com um parceiro!", videoUrl: "https://www.youtube.com/embed/kxAn8GCnzEw", type: "challenge" },
     ],
   },
 
   // ══════════════════════════════════════════════════════════════════════════
-  // NÍVEL 3 — Saque por Baixo
+  // NÍVEL 3 — Saque (módulos de saque unificados)
   // ══════════════════════════════════════════════════════════════════════════
   {
     id: 3,
-    title: "Saque por Baixo",
-    description: "Aprenda o saque básico do vôlei",
+    title: "Saque",
+    description: "Aprenda o posicionamento e pratique o saque para o jogo",
     icon: "🎯",
     color: "accent",
     exercises: [
-      // >>> AULA 3-1: Posição Inicial
-      { id: "3-1", title: "Posição Inicial", description: "Aprenda a postura e o posicionamento dos pés para o saque por baixo.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_3_1", type: "exercise" },
-      // >>> AULA 3-2: Movimento do Braço
-      { id: "3-2", title: "Movimento do Braço", description: "Pratique o balanço do braço sem bola, criando o ritmo correto.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_3_2", type: "exercise" },
-      // >>> AULA 3-3: Saque na Parede
-      { id: "3-3", title: "Saque na Parede", description: "Execute saques contra a parede para desenvolver precisão.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_3_3", type: "exercise" },
-      // >>> AULA 3-4: Saque por Cima da Rede
-      { id: "3-4", title: "Saque por Cima da Rede", description: "Pratique sacando por cima da rede de diferentes distâncias.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_3_4", type: "exercise" },
-      // >>> AULA 3-5: Saque Direcionado
-      { id: "3-5", title: "Saque Direcionado", description: "Tente acertar alvos específicos na quadra adversária.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_3_5", type: "exercise" },
-      // >>> DESAFIO 3-6: 5 Saques Certeiros
-      { id: "3-6", title: "Desafio: 5 Saques Certeiros", description: "Acerte 5 saques em zonas marcadas da quadra!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_3_6", type: "challenge" },
-    ],
-  },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // NÍVEL 4 — Saque por Cima
-  // ══════════════════════════════════════════════════════════════════════════
-  {
-    id: 4,
-    title: "Saque por Cima",
-    description: "Evolua para o saque viagem",
-    icon: "🚀",
-    color: "gold",
-    exercises: [
-      // >>> AULA 4-1: Lançamento da Bola
-      { id: "4-1", title: "Lançamento da Bola", description: "Pratique lançar a bola na altura e posição corretas para o saque.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_4_1", type: "exercise" },
-      // >>> AULA 4-2: Movimento Completo
-      { id: "4-2", title: "Movimento Completo", description: "Combine o lançamento com o movimento do braço em câmera lenta.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_4_2", type: "exercise" },
-      // >>> AULA 4-3: Saque sem Rede
-      { id: "4-3", title: "Saque sem Rede", description: "Execute o saque completo focando na técnica, sem se preocupar com a rede.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_4_3", type: "exercise" },
-      // >>> AULA 4-4: Saque com Rede
-      { id: "4-4", title: "Saque com Rede", description: "Pratique o saque por cima passando a bola por cima da rede.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_4_4", type: "exercise" },
-      // >>> AULA 4-5: Potência e Controle
-      { id: "4-5", title: "Potência e Controle", description: "Trabalhe o equilíbrio entre potência e direção no saque.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_4_5", type: "exercise" },
-      // >>> DESAFIO 4-6: Saque Ace
-      { id: "4-6", title: "Desafio: Saque Ace", description: "Marque 3 aces em 10 tentativas de saque!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_4_6", type: "challenge" },
+      // >>> AULA 3-1: Posicionamento — Saque por Baixo
+      { id: "3-1", title: "Posicionamento — Saque por Baixo", description: "Aprenda o posicionamento e o movimento do saque por baixo.", videoUrl: "https://www.youtube.com/embed/J-kV_wa69Hw", type: "exercise" },
+      // >>> AULA 3-2: Saque por Baixo para Jogo
+      { id: "3-2", title: "Saque por Baixo para Jogo", description: "Saque a bola e faça ela percorrer uma distância de 9 passos.", videoUrl: "https://www.youtube.com/embed/zNbTDXDsP-c", type: "exercise" },
     ],
   },
 
@@ -291,5 +257,5 @@ export const achievements = [
   { id: "twenty-exercises", title: "Atleta", description: "Complete 20 exercícios", icon: "🏅", requirement: 20 },
   { id: "half-way", title: "Meio Caminho", description: "Complete 30 exercícios", icon: "🎯", requirement: 30 },
   { id: "five-levels", title: "Veterano", description: "Complete 5 níveis", icon: "👑", requirement: "five-levels" },
-  { id: "all-done", title: "Mestre do Vôlei", description: "Complete todos os exercícios", icon: "🏆", requirement: 60 },
+  { id: "all-done", title: "Mestre do Vôlei", description: "Complete todos os exercícios", icon: "🏆", requirement: levels.reduce((total, level) => total + level.exercises.length, 0) },
 ];

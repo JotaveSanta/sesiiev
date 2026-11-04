@@ -45,8 +45,10 @@ const Course = () => {
 
   const renderContent = () => {
     if (view.type === "exercise") {
-      const level = levels.find((l) => l.id === view.levelId)!;
+      const level = levels.find((l) => l.id === view.levelId);
+      if (!level) return null;
       const exercise = level.exercises[view.exerciseIndex];
+      if (!exercise) return null;
       const regularExercises = level.exercises.filter((e) => e.type === "exercise");
       const exerciseNumber = exercise.type === "challenge"
         ? regularExercises.length + 1
@@ -66,7 +68,8 @@ const Course = () => {
     }
 
     if (view.type === "level") {
-      const level = levels.find((l) => l.id === view.levelId)!;
+      const level = levels.find((l) => l.id === view.levelId);
+      if (!level) return null;
       return (
         <div className="animate-pop-in">
           <button
@@ -83,7 +86,7 @@ const Course = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                  Nível {level.id}
+                  Nível {levels.indexOf(level) + 1}
                 </span>
                 <h2 className="text-2xl font-extrabold text-foreground">{level.title}</h2>
                 <p className="text-muted-foreground text-sm">{level.description}</p>
