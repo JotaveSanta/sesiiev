@@ -29,18 +29,18 @@ describe("curriculum updates", () => {
     ]);
   });
 
-  it("keeps Levantamento reachable after completing the combined serve module", () => {
-    expect(getPreviousLevel(5)?.id).toBe(3);
+  it("keeps Ataque reachable after completing the serve module", () => {
+    expect(getPreviousLevel(6)?.id).toBe(3);
   });
 
   it("excludes removed lessons from totals while preserving active progress", () => {
-    expect(getActiveCompletedExercises(["2-4", "2-5", "4-1", "3-1", "2-4"])).toEqual(["2-4", "3-1"]);
+    expect(getActiveCompletedExercises(["2-4", "2-5", "4-1", "5-1", "8-1", "3-1", "2-4"])).toEqual(["2-4", "3-1"]);
   });
 
   it("awards course completion at the new total instead of 60", () => {
     const completedIds = levels.flatMap((level) => level.exercises.map((exercise) => exercise.id));
-    expect(completedIds).toHaveLength(52);
-    expect(getUnlockedAchievements(51, 8, completedIds.slice(0, -1))).not.toContain("all-done");
-    expect(getUnlockedAchievements(52, 9, completedIds)).toContain("all-done");
+    expect(completedIds).toHaveLength(40);
+    expect(getUnlockedAchievements(39, 6, completedIds.slice(0, -1))).not.toContain("all-done");
+    expect(getUnlockedAchievements(40, 7, completedIds)).toContain("all-done");
   });
 });
