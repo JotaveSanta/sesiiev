@@ -105,31 +105,6 @@ export const levels: Level[] = [
   },
 
   // ══════════════════════════════════════════════════════════════════════════
-  // NÍVEL 5 — Levantamento
-  // ══════════════════════════════════════════════════════════════════════════
-  {
-    id: 5,
-    title: "Levantamento",
-    description: "Aprenda a levantar a bola para o ataque",
-    icon: "⬆️",
-    color: "primary",
-    exercises: [
-      // >>> AULA 5-1: Toque de Levantamento
-      { id: "5-1", title: "Toque de Levantamento", description: "Pratique o toque alto e preciso para posicionar a bola no ataque.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_5_1", type: "exercise" },
-      // >>> AULA 5-2: Levantamento Frontal
-      { id: "5-2", title: "Levantamento Frontal", description: "Levante a bola para frente com controle de altura e direção.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_5_2", type: "exercise" },
-      // >>> AULA 5-3: Levantamento de Costas
-      { id: "5-3", title: "Levantamento de Costas", description: "Aprenda a levantar a bola para trás, surpreendendo o bloqueio.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_5_3", type: "exercise" },
-      // >>> AULA 5-4: Levantamento em Movimento
-      { id: "5-4", title: "Levantamento em Movimento", description: "Pratique o levantamento se deslocando para a posição correta.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_5_4", type: "exercise" },
-      // >>> AULA 5-5: Levantamento de Manchete
-      { id: "5-5", title: "Levantamento de Manchete", description: "Use a manchete para levantar em situações de emergência.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_5_5", type: "exercise" },
-      // >>> DESAFIO 5-6: Levantamento Preciso
-      { id: "5-6", title: "Desafio: Levantamento Preciso", description: "Levante 10 bolas acertando a zona de ataque marcada!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_5_6", type: "challenge" },
-    ],
-  },
-
-  // ══════════════════════════════════════════════════════════════════════════
   // NÍVEL 6 — Ataque
   // ══════════════════════════════════════════════════════════════════════════
   {
@@ -176,31 +151,6 @@ export const levels: Level[] = [
       { id: "7-5", title: "Bloqueio Duplo", description: "Aprenda a sincronizar o bloqueio com outro jogador.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_7_5", type: "exercise" },
       // >>> DESAFIO 7-6: Muro de Ferro
       { id: "7-6", title: "Desafio: Muro de Ferro", description: "Bloqueie 5 ataques consecutivos com sucesso!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_7_6", type: "challenge" },
-    ],
-  },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // NÍVEL 8 — Defesa
-  // ══════════════════════════════════════════════════════════════════════════
-  {
-    id: 8,
-    title: "Defesa",
-    description: "Melhore suas habilidades defensivas",
-    icon: "🏊",
-    color: "gold",
-    exercises: [
-      // >>> AULA 8-1: Posição Defensiva
-      { id: "8-1", title: "Posição Defensiva", description: "Aprenda a postura baixa e preparada para a defesa.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_8_1", type: "exercise" },
-      // >>> AULA 8-2: Defesa de Manchete
-      { id: "8-2", title: "Defesa de Manchete", description: "Pratique defender bolas fortes usando a manchete.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_8_2", type: "exercise" },
-      // >>> AULA 8-3: Mergulho (Peixinho)
-      { id: "8-3", title: "Mergulho (Peixinho)", description: "Aprenda a técnica do mergulho para alcançar bolas distantes.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_8_3", type: "exercise" },
-      // >>> AULA 8-4: Rolamento
-      { id: "8-4", title: "Rolamento", description: "Pratique o rolamento lateral para se recuperar após uma defesa.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_8_4", type: "exercise" },
-      // >>> AULA 8-5: Defesa em Situação de Jogo
-      { id: "8-5", title: "Defesa em Situação de Jogo", description: "Simule situações reais de defesa com ataques variados.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_8_5", type: "exercise" },
-      // >>> DESAFIO 8-6: Defesa Impossível
-      { id: "8-6", title: "Desafio: Defesa Impossível", description: "Defenda 8 de 10 ataques em sequência!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_8_6", type: "challenge" },
     ],
   },
 
