@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 64 64">
+  <defs><clipPath id="ball"><circle cx="32" cy="32" r="29"/></clipPath></defs>
+  <circle cx="32" cy="32" r="30" fill="#fff" stroke="#243e59" stroke-width="2"/>
+  <g clip-path="url(#ball)" stroke="#243e59" stroke-width="1.5" stroke-linejoin="round">
+    <path d="M32 32C20 23 17 12 22 2C6 6-2 24 3 39C14 45 25 41 32 32Z" fill="#f7ca3e"/>
+    <path d="M32 32C46 25 58 27 63 36C66 20 53 4 38 2C26 8 25 21 32 32Z" fill="#2683c5"/>
+    <path d="M32 32C30 47 23 55 12 55C25 67 47 64 57 50C56 37 43 32 32 32Z" fill="#f7ca3e"/>
+    <path d="M32 32C20 23 17 12 22 2M32 32C46 25 58 27 63 36M32 32C30 47 23 55 12 55" fill="none"/>
+    <path d="M9 17C8 31 17 36 28 36M43 6C31 12 32 24 37 30M50 56C50 43 39 38 30 39" fill="none"/>
+  </g>
+</svg>

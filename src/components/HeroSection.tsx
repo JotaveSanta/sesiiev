@@ -19,6 +19,9 @@ export function HeroSection({ onStart }: HeroSectionProps) {
       />
       {/* Dark overlay for legibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/60 to-foreground/80" />
+      <div className="volleyball-flight" aria-hidden="true">
+        <img src="/volleyball.svg" alt="" className="volleyball-spin" />
+      </div>
 
       <div className="relative max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-4xl md:text-6xl font-black text-primary-foreground leading-tight mb-5 tracking-tight">

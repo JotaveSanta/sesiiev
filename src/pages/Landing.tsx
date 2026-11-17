@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { LandingHeader } from "@/components/LandingHeader";
 import { HeroSection } from "@/components/HeroSection";
+import { CoursePreview } from "@/components/CoursePreview";
 import { TeamSection } from "@/components/TeamSection";
 import { ObjetivoSection } from "@/components/ObjetivoSection";
 import { TrajetoriaSection } from "@/components/TrajetoriaSection";
@@ -15,9 +16,10 @@ const Landing = () => {
   const handleStart = () => navigate("/curso");
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="volleyball-experience min-h-screen bg-background">
       <LandingHeader onStart={handleStart} />
       <HeroSection onStart={handleStart} />
+      <CoursePreview onStart={handleStart} />
       <ObjetivoSection />
       <TrajetoriaSection />
       <TeamSection />

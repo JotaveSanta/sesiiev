@@ -113,3 +113,31 @@
     box-shadow: 0 4px 0 0 hsl(43 96% 40%);
   }
 }
+
+/* Small, non-interactive volleyball pass contained within the opening photo. */
+.volleyball-flight {
+  position: absolute;
+  bottom: 24px;
+  left: -64px;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  animation: volleyball-pass 18s ease-in-out infinite;
+}
+.volleyball-spin { width: 100%; height: 100%; animation: volleyball-turn 2s linear infinite; }
+@keyframes volleyball-pass {
+  0%, 70% { left: -64px; transform: translateY(0); opacity: 0; }
+  72% { opacity: 1; }
+  82% { transform: translateY(-30px); }
+  94%, 100% { left: calc(100% + 64px); transform: translateY(0); opacity: 0; }
+}
+@keyframes volleyball-turn { to { transform: rotate(360deg); } }
+@media (hover: hover) and (pointer: fine) {
+  .volleyball-experience button:not(:disabled),
+  .volleyball-experience a,
+  .lesson-preview { cursor: url('/volleyball.svg') 16 16, pointer; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .volleyball-flight { display: none; }
+  .volleyball-spin { animation: none; }
+}
