@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { StudentConversations } from "@/components/StudentConversations";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Informe seu nome").max(100),
@@ -27,6 +28,7 @@ const Feedback = () => {
   const [email, setEmail] = useState(user?.email ?? "");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [refresh, setRefresh] = useState(0);
 
   const submit = async () => {
     const parsed = schema.safeParse({ name, email, message });
@@ -46,6 +48,7 @@ const Feedback = () => {
           : "Link de vídeo enviado para feedback!",
       );
       setMessage("");
+      setRefresh((value) => value + 1);
     } catch (e) {
       toast.error("Não foi possível enviar. Tente novamente.");
       console.error(e);
@@ -137,7 +140,9 @@ const Feedback = () => {
               Dica: faça upload no YouTube (não listado) ou Google Drive e cole o link aqui.
             </p>
           )}
+          {!user && <p className="text-sm text-muted-foreground">Entre na sua conta antes de enviar para receber a resposta do professor aqui.</p>}
         </div>
+        <StudentConversations refresh={refresh} />
       </main>
       <Footer />
     </div>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check, MessageCircle, ArrowLeft, Trophy } from "lucide-react";
 import { QuestionDialog } from "@/components/QuestionDialog";
 import { isPlayableVideoUrl } from "@/lib/video";
+import { StudentConversations } from "@/components/StudentConversations";
 
 interface ExerciseViewProps {
   exercise: Exercise;
@@ -26,6 +27,7 @@ export function ExerciseView({
 }: ExerciseViewProps) {
   const [showComplete, setShowComplete] = useState(false);
   const [questionOpen, setQuestionOpen] = useState(false);
+  const [refresh, setRefresh] = useState(0);
 
   const handleComplete = () => {
     if (!isCompleted) {
@@ -106,9 +108,14 @@ export function ExerciseView({
       <QuestionDialog
         open={questionOpen}
         onOpenChange={setQuestionOpen}
-        onSubmit={onSubmitQuestion}
+        onSubmit={async (question) => {
+          const sent = await onSubmitQuestion(question);
+          if (sent) setRefresh((value) => value + 1);
+          return sent;
+        }}
         exerciseTitle={exercise.title}
       />
+      <StudentConversations exerciseId={exercise.id} refresh={refresh} />
     </div>
   );
 }

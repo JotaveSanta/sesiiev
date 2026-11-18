@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { LandingHeader } from "@/components/LandingHeader";
 import { Footer } from "@/components/Footer";
+import { TeacherConversation } from "@/components/TeacherConversation";
 import { levels } from "@/data/levels";
 import { logAudit } from "@/lib/audit";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -40,6 +41,7 @@ interface AuditRow {
 
 interface FeedbackRow {
   id: string;
+  user_id: string | null;
   type: string;
   name: string;
   email: string;
@@ -168,7 +170,7 @@ const Admin = () => {
   const loadFeedback = useCallback(async () => {
     const { data } = await supabase
       .from("feedback_submissions")
-      .select("id, type, name, email, message, synced_to_sheet, created_at")
+      .select("id, user_id, type, name, email, message, synced_to_sheet, created_at")
       .order("created_at", { ascending: false })
       .limit(200);
     setFeedback((data ?? []) as FeedbackRow[]);
@@ -324,6 +326,8 @@ const Admin = () => {
                         )}
                       </div>
                       <p className="text-foreground text-sm break-words">{f.message}</p>
+                      <TeacherConversation kind="feedback" id={f.id} canReply={!!f.user_id} />
+                      {!f.user_id && <p className="mt-2 text-xs text-muted-foreground">Envio sem conta vinculada: o aluno não poderá consultar uma resposta pelo site.</p>}
                     </div>
                   ))}
                 </div>
@@ -340,7 +344,7 @@ const Admin = () => {
                   {questions.map((q) => (
                     <div
                       key={q.id}
-                      className={`bg-card rounded-2xl p-5 card-shadow ${q.answered ? "opacity-60" : ""}`}
+                      className="bg-card rounded-2xl p-5 card-shadow"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0 flex-1">
@@ -371,6 +375,7 @@ const Admin = () => {
                           )}
                         </button>
                       </div>
+                      <TeacherConversation kind="question" id={q.id} canReply />
                     </div>
                   ))}
                 </div>

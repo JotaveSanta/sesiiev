@@ -134,6 +134,57 @@ export type Database = {
         }
         Relationships: []
       }
+      teacher_responses: {
+        Row: {
+          author_id: string
+          created_at: string
+          feedback_id: string | null
+          id: string
+          lesson_id: string | null
+          message: string
+          question_id: string | null
+          video_path: string | null
+          video_url: string | null
+        }
+        Insert: {
+          author_id: string
+          created_at?: string
+          feedback_id?: string | null
+          id?: string
+          lesson_id?: string | null
+          message: string
+          question_id?: string | null
+          video_path?: string | null
+          video_url?: string | null
+        }
+        Update: {
+          author_id?: string
+          created_at?: string
+          feedback_id?: string | null
+          id?: string
+          lesson_id?: string | null
+          message?: string
+          question_id?: string | null
+          video_path?: string | null
+          video_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "teacher_responses_feedback_id_fkey"
+            columns: ["feedback_id"]
+            isOneToOne: false
+            referencedRelation: "feedback_submissions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "teacher_responses_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "questions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_progress: {
         Row: {
           completed_at: string

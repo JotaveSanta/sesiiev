@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { toast } from "sonner";
 import { levels } from "@/data/levels";
 import { useProgress } from "@/hooks/useProgress";
 import { useAuth } from "@/contexts/AuthContext";
@@ -21,6 +22,21 @@ const Course = () => {
   const progress = useProgress();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const requestedLesson = params.get("aula");
+  useEffect(() => {
+    if (!user || progress.loading || !requestedLesson) return;
+    const level = levels.find((item) => item.exercises.some((e) => e.id === requestedLesson));
+    const index = level?.exercises.findIndex((e) => e.id === requestedLesson) ?? -1;
+    if (!level || index < 0) { toast.error("Esta aula não está mais disponível."); return; }
+    const previous = level.exercises[index - 1];
+    if (!progress.isLevelUnlocked(level.id) || (previous && !progress.isExerciseCompleted(previous.id) && !progress.isExerciseCompleted(requestedLesson))) {
+      toast.info("Conclua as aulas anteriores para abrir a aula indicada.");
+      setView({ type: "path" });
+      return;
+    }
+    setView({ type: "exercise", levelId: level.id, exerciseIndex: index });
+  }, [requestedLesson, user, progress.loading, progress.isLevelUnlocked, progress.isExerciseCompleted]);
 
   if (!user) {
     return (
