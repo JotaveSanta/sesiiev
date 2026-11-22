@@ -8,5 +8,5 @@
 - [ ] Vídeos pendentes: Ataque, Bloqueio, Sistemas de Jogo e Jogo Completo — aguardando links.
 - [x] Adicionar carrossel de prévias das aulas na página inicial.
 - [x] Adicionar animação discreta de bola e detalhes de vôlei nos botões; conferir no computador e celular.
-- [ ] Permitir ao professor responder dúvidas das aulas e envios com texto, vídeo opcional e indicação de aula.
-- [ ] Mostrar histórico de respostas ao aluno e verificar envio, anexos e privacidade entre contas.
+- [x] Permitir ao professor responder dúvidas das aulas e envios com texto, vídeo opcional e indicação de aula.
+- [x] Mostrar histórico de respostas ao aluno e verificar envio, anexos e privacidade entre contas.
