@@ -104,103 +104,33 @@ export const levels: Level[] = [
     ],
   },
 
-  // ══════════════════════════════════════════════════════════════════════════
-  // NÍVEL 6 — Ataque
-  // ══════════════════════════════════════════════════════════════════════════
+  // IDs dos módulos preservados para manter o progresso salvo.
   {
     id: 6,
     title: "Ataque",
-    description: "Aprenda o fundamento mais poderoso do vôlei",
+    description: "Treine o encaixe da bola e a passada de ataque",
     icon: "⚡",
     color: "secondary",
     exercises: [
-      // >>> AULA 6-1: Passada de Ataque
-      { id: "6-1", title: "Passada de Ataque", description: "Aprenda as 3 passadas da aproximação para o ataque.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_1", type: "exercise" },
-      // >>> AULA 6-2: Salto e Alcance
-      { id: "6-2", title: "Salto e Alcance", description: "Pratique o salto vertical e o ponto mais alto de contato.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_2", type: "exercise" },
-      // >>> AULA 6-3: Ataque sem Bola
-      { id: "6-3", title: "Ataque sem Bola", description: "Execute o movimento completo do ataque sem bola para fixar a técnica.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_3", type: "exercise" },
-      // >>> AULA 6-4: Ataque com Levantamento
-      { id: "6-4", title: "Ataque com Levantamento", description: "Pratique o ataque com um levantador, focando no timing.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_4", type: "exercise" },
-      // >>> AULA 6-5: Ataque Diagonal e Paralelo
-      { id: "6-5", title: "Ataque Diagonal e Paralelo", description: "Aprenda a direcionar o ataque para diferentes zonas da quadra.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_6_5", type: "exercise" },
-      // >>> DESAFIO 6-6: 5 Ataques Vencedores
-      { id: "6-6", title: "Desafio: 5 Ataques Vencedores", description: "Acerte 5 ataques que toquem o chão da quadra adversária!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_6_6", type: "challenge" },
+      // >>> AULA 6-1: Encaixe com Bolinha
+      { id: "6-1", title: "Encaixe com Bolinha", description: "Jogue a bolinha para cima e encaixe na mão, treinando o contato para o ataque.", videoUrl: "https://www.youtube.com/embed/qCeoatuJE3Y", type: "exercise" },
+      // >>> AULA 6-2: Encaixe na Parede
+      { id: "6-2", title: "Encaixe na Parede", description: "Encaixe a bola de vôlei na parede repetidamente para treinar o encaixe e o movimento de ataque.", videoUrl: "https://www.youtube.com/embed/sU11fUWpb8A", type: "exercise" },
+      // >>> AULA 6-3: Passada sem a Bola
+      { id: "6-3", title: "Passada sem a Bola", description: "Aprenda a passada de ataque, coordenando braços e pernas para potencializar o salto e obter o melhor resultado possível.", videoUrl: "https://www.youtube.com/embed/QA0DscPC4rA", type: "exercise" },
     ],
   },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // NÍVEL 7 — Bloqueio
-  // ══════════════════════════════════════════════════════════════════════════
   {
     id: 7,
     title: "Bloqueio",
-    description: "Aprenda a bloquear ataques adversários",
+    description: "Treine o bloqueio nas pontas e no meio da rede",
     icon: "🛡️",
     color: "accent",
     exercises: [
-      // >>> AULA 7-1: Posição de Bloqueio
-      { id: "7-1", title: "Posição de Bloqueio", description: "Aprenda a posição básica junto à rede para o bloqueio.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_7_1", type: "exercise" },
-      // >>> AULA 7-2: Salto de Bloqueio
-      { id: "7-2", title: "Salto de Bloqueio", description: "Pratique o salto vertical com as mãos acima da rede.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_7_2", type: "exercise" },
-      // >>> AULA 7-3: Deslocamento Lateral
-      { id: "7-3", title: "Deslocamento Lateral", description: "Treine o deslocamento lateral rápido para cobrir a rede.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_7_3", type: "exercise" },
-      // >>> AULA 7-4: Bloqueio Individual
-      { id: "7-4", title: "Bloqueio Individual", description: "Pratique o bloqueio 1x1 contra um atacante.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_7_4", type: "exercise" },
-      // >>> AULA 7-5: Bloqueio Duplo
-      { id: "7-5", title: "Bloqueio Duplo", description: "Aprenda a sincronizar o bloqueio com outro jogador.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_7_5", type: "exercise" },
-      // >>> DESAFIO 7-6: Muro de Ferro
-      { id: "7-6", title: "Desafio: Muro de Ferro", description: "Bloqueie 5 ataques consecutivos com sucesso!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_7_6", type: "challenge" },
-    ],
-  },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // NÍVEL 9 — Sistemas de Jogo
-  // ══════════════════════════════════════════════════════════════════════════
-  {
-    id: 9,
-    title: "Sistemas de Jogo",
-    description: "Entenda as formações e rotações",
-    icon: "📋",
-    color: "primary",
-    exercises: [
-      // >>> AULA 9-1: Posições na Quadra
-      { id: "9-1", title: "Posições na Quadra", description: "Aprenda as 6 posições e suas responsabilidades no vôlei.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_9_1", type: "exercise" },
-      // >>> AULA 9-2: Sistema 6x0
-      { id: "9-2", title: "Sistema 6x0", description: "Entenda o sistema básico onde todos levantam.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_9_2", type: "exercise" },
-      // >>> AULA 9-3: Sistema 4x2
-      { id: "9-3", title: "Sistema 4x2", description: "Aprenda o sistema com 2 levantadores opostos.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_9_3", type: "exercise" },
-      // >>> AULA 9-4: Sistema 5x1
-      { id: "9-4", title: "Sistema 5x1", description: "Domine o sistema mais usado no vôlei moderno.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_9_4", type: "exercise" },
-      // >>> AULA 9-5: Rotação e Troca
-      { id: "9-5", title: "Rotação e Troca", description: "Pratique as rotações e trocas de posição após o saque.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_9_5", type: "exercise" },
-      // >>> DESAFIO 9-6: Monte sua Formação
-      { id: "9-6", title: "Desafio: Monte sua Formação", description: "Organize uma formação 5x1 completa com rotações!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_9_6", type: "challenge" },
-    ],
-  },
-
-  // ══════════════════════════════════════════════════════════════════════════
-  // NÍVEL 10 — Jogo Completo
-  // ══════════════════════════════════════════════════════════════════════════
-  {
-    id: 10,
-    title: "Jogo Completo",
-    description: "Coloque tudo em prática!",
-    icon: "🏆",
-    color: "gold",
-    exercises: [
-      // >>> AULA 10-1: Aquecimento Completo
-      { id: "10-1", title: "Aquecimento Completo", description: "Execute uma rotina de aquecimento para vôlei com todos os fundamentos.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_10_1", type: "exercise" },
-      // >>> AULA 10-2: Sequência Saque-Recepção
-      { id: "10-2", title: "Sequência Saque-Recepção", description: "Pratique a sequência completa de saque e recepção com parceiros.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_10_2", type: "exercise" },
-      // >>> AULA 10-3: Rally Completo
-      { id: "10-3", title: "Rally Completo", description: "Execute rallies com todas as fases: recepção, levantamento e ataque.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_10_3", type: "exercise" },
-      // >>> AULA 10-4: Situações Especiais
-      { id: "10-4", title: "Situações Especiais", description: "Pratique bolas de segunda, largadas e ataques de fundo.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_10_4", type: "exercise" },
-      // >>> AULA 10-5: Mini Jogo
-      { id: "10-5", title: "Mini Jogo", description: "Jogue um set até 15 pontos aplicando todos os fundamentos.", videoUrl: "COLE_AQUI_O_LINK_DO_VIDEO_10_5", type: "exercise" },
-      // >>> DESAFIO FINAL 10-6: Partida Completa
-      { id: "10-6", title: "Desafio Final: Partida Completa", description: "Jogue uma partida completa de 3 sets aplicando tudo que aprendeu!", videoUrl: "COLE_AQUI_O_LINK_DO_DESAFIO_10_6", type: "challenge" },
+      // >>> AULA 7-1: Bloqueio das Pontas
+      { id: "7-1", title: "Bloqueio das Pontas", description: "Pratique o bloqueio nas pontas da rede.", videoUrl: "https://www.youtube.com/embed/AHHhCZ8rbVk", type: "exercise" },
+      // >>> AULA 7-2: Bloqueio do Meio
+      { id: "7-2", title: "Bloqueio do Meio", description: "Pratique o bloqueio no meio da rede.", videoUrl: "https://www.youtube.com/embed/Kifc2uVDLx8", type: "exercise" },
     ],
   },
 ];

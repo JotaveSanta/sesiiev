@@ -5,7 +5,9 @@
 - [x] Executar testes e registrar pendências que dependem de conteúdo ou serviços externos.
 - [x] Atualizar Manchete: retirar aula de defesa e incluir vídeos da lateral e do desafio.
 - [x] Unir os módulos de saque com as duas aulas fornecidas e adaptar progresso à nova sequência.
-- [ ] Vídeos pendentes: Ataque, Bloqueio, Sistemas de Jogo e Jogo Completo — aguardando links.
+- [x] Atualizar fotos de Ricardo, Thomaz, Lucca e João Vitor na ordem informada dos anexos.
+- [x] Retirar Sistemas de Jogo e Jogo Completo; atualizar Ataque com três aulas e Bloqueio com duas aulas fornecidas.
+- [x] Verificar vídeos, fotos e totais da trilha atualizada.
 - [x] Adicionar carrossel de prévias das aulas na página inicial.
 - [x] Adicionar animação discreta de bola e detalhes de vôlei nos botões; conferir no computador e celular.
 - [x] Permitir ao professor responder dúvidas das aulas e envios com texto, vídeo opcional e indicação de aula.

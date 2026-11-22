@@ -34,13 +34,30 @@ describe("curriculum updates", () => {
   });
 
   it("excludes removed lessons from totals while preserving active progress", () => {
-    expect(getActiveCompletedExercises(["2-4", "2-5", "4-1", "5-1", "8-1", "3-1", "2-4"])).toEqual(["2-4", "3-1"]);
+    expect(getActiveCompletedExercises(["2-4", "2-5", "4-1", "5-1", "8-1", "9-1", "10-1", "6-4", "7-3", "3-1", "2-4"])).toEqual(["2-4", "3-1"]);
   });
 
   it("awards course completion at the new total instead of 60", () => {
     const completedIds = levels.flatMap((level) => level.exercises.map((exercise) => exercise.id));
-    expect(completedIds).toHaveLength(40);
-    expect(getUnlockedAchievements(39, 6, completedIds.slice(0, -1))).not.toContain("all-done");
-    expect(getUnlockedAchievements(40, 7, completedIds)).toContain("all-done");
+    expect(completedIds).toHaveLength(21);
+    expect(getUnlockedAchievements(20, 4, completedIds.slice(0, -1))).not.toContain("all-done");
+    expect(getUnlockedAchievements(21, 5, completedIds)).toContain("all-done");
+  });
+  it("removes Sistemas de Jogo and Jogo Completo while keeping module IDs stable", () => {
+    expect(levels.map((level) => level.id)).toEqual([1, 2, 3, 6, 7]);
+    expect(getPreviousLevel(7)?.id).toBe(6);
+  });
+  it("uses the three supplied Ataque lessons in order", () => {
+    expect(levels.find((level) => level.id === 6)?.exercises.map((e) => [e.id, e.videoUrl])).toEqual([
+      ["6-1", "https://www.youtube.com/embed/qCeoatuJE3Y"],
+      ["6-2", "https://www.youtube.com/embed/sU11fUWpb8A"],
+      ["6-3", "https://www.youtube.com/embed/QA0DscPC4rA"],
+    ]);
+  });
+  it("uses the two supplied Bloqueio lessons in order", () => {
+    expect(levels.find((level) => level.id === 7)?.exercises.map((e) => [e.id, e.videoUrl])).toEqual([
+      ["7-1", "https://www.youtube.com/embed/AHHhCZ8rbVk"],
+      ["7-2", "https://www.youtube.com/embed/Kifc2uVDLx8"],
+    ]);
   });
 });

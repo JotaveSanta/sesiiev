@@ -1,6 +1,8 @@
 import { User } from "lucide-react";
-import joaoVitorAsset from "@/assets/equipe-joao-vitor.png.asset.json";
-import thomazAsset from "@/assets/equipe-thomaz.png.asset.json";
+import joaoVitorAsset from "@/assets/equipe-joao-vitor-atualizada.jpeg.asset.json";
+import thomazAsset from "@/assets/equipe-thomaz-atualizada.jpeg.asset.json";
+import luccaAsset from "@/assets/equipe-lucca-atualizada.jpeg.asset.json";
+import ricardoAsset from "@/assets/equipe-ricardo-atualizada.jpeg.asset.json";
 
 const teamMembers = [
   {
@@ -23,6 +25,7 @@ const teamMembers = [
   },
   {
     name: "Lucca Stuart Zanotto",
+    image: luccaAsset.url,
     role: "Designer & Estrategista",
     emoji: "🎨",
     color: "from-accent to-accent/70",
@@ -31,6 +34,7 @@ const teamMembers = [
   },
   {
     name: "Ricardo da Silva Bittencourt",
+    image: ricardoAsset.url,
     role: "Pesquisador & Analista",
     emoji: "📊",
     color: "from-primary to-secondary",
@@ -83,7 +87,7 @@ export function TeamSection() {
                         src={member.image}
                         alt={`Foto de ${member.name}`}
                         loading="lazy"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-top"
                       />
                     ) : (
                       <User className="w-10 h-10 text-primary-foreground/80" />
