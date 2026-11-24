@@ -12,3 +12,5 @@
 - [x] Adicionar animação discreta de bola e detalhes de vôlei nos botões; conferir no computador e celular.
 - [x] Permitir ao professor responder dúvidas das aulas e envios com texto, vídeo opcional e indicação de aula.
 - [x] Mostrar histórico de respostas ao aluno e verificar envio, anexos e privacidade entre contas.
+- [x] Revisar conquistas e informações do curso para eliminar metas incompatíveis com as aulas atuais.
+- [x] Verificar as correções com testes e no curso aberto por um usuário autenticado.

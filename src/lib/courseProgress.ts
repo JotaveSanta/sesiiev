@@ -1,4 +1,4 @@
-import { levels } from "@/data/levels";
+import { achievements, levels } from "@/data/levels";
 
 export function getPreviousLevel(levelId: number) {
   const index = levels.findIndex((level) => level.id === levelId);
@@ -11,15 +11,11 @@ export function getActiveCompletedExercises(completedExercises: string[]) {
 }
 
 export function getUnlockedAchievements(totalCompleted: number, completedLevels: number, completedExercises: string[]) {
-  const allExercises = levels.flatMap((level) => level.exercises);
-  const unlocked: string[] = [];
-  if (totalCompleted >= 1) unlocked.push("first-exercise");
-  if (totalCompleted >= 5) unlocked.push("five-exercises");
-  if (totalCompleted >= 10) unlocked.push("ten-exercises");
-  if (totalCompleted >= 20) unlocked.push("twenty-exercises");
-  if (totalCompleted >= 30) unlocked.push("half-way");
-  if (totalCompleted >= allExercises.length) unlocked.push("all-done");
-  if (allExercises.some((exercise) => exercise.type === "challenge" && completedExercises.includes(exercise.id))) unlocked.push("first-challenge");
-  if (completedLevels >= 5) unlocked.push("five-levels");
-  return unlocked;
+  const activeIds = new Set(getActiveCompletedExercises(completedExercises));
+  const metrics = {
+    exercises: Math.min(totalCompleted, activeIds.size),
+    levels: Math.min(completedLevels, levels.filter((level) => level.exercises.every((exercise) => activeIds.has(exercise.id))).length),
+    challenges: levels.flatMap((level) => level.exercises).filter((exercise) => exercise.type === "challenge" && activeIds.has(exercise.id)).length,
+  };
+  return achievements.filter((achievement) => metrics[achievement.metric] >= achievement.requirement).map((achievement) => achievement.id);
 }

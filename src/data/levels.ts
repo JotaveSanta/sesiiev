@@ -100,7 +100,7 @@ export const levels: Level[] = [
       // >>> AULA 3-4: Saque por Cima para Jogo
       { id: "3-4", title: "Saque por Cima para Jogo", description: "Saque a bola e faça ela percorrer uma distância de 9 metros.", videoUrl: "https://www.youtube.com/embed/Mn9Uv-RdyUc", type: "exercise" },
       // >>> DESAFIO 3-5: Saque na Parede
-      { id: "3-5", title: "Desafio: Saque na Parede", description: "Saque acertando um ponto na altura de 2,43 m na parede, a uma distância de 9 metros (9 passos).", videoUrl: "https://www.youtube.com/embed/OcJkD8xJqFE", type: "challenge" },
+      { id: "3-5", title: "Desafio: Saque na Parede", description: "Saque acertando um ponto na altura de 2,43 m na parede, a uma distância de 9 metros.", videoUrl: "https://www.youtube.com/embed/OcJkD8xJqFE", type: "challenge" },
     ],
   },
 
@@ -135,13 +135,32 @@ export const levels: Level[] = [
   },
 ];
 
-export const achievements = [
-  { id: "first-exercise", title: "Primeiro Passo", description: "Complete seu primeiro exercício", icon: "🌟", requirement: 1 },
-  { id: "five-exercises", title: "Esquentando", description: "Complete 5 exercícios", icon: "🔥", requirement: 5 },
-  { id: "first-challenge", title: "Desafiante", description: "Complete seu primeiro desafio", icon: "⚔️", requirement: "first-challenge" },
-  { id: "ten-exercises", title: "Dedicado", description: "Complete 10 exercícios", icon: "💎", requirement: 10 },
-  { id: "twenty-exercises", title: "Atleta", description: "Complete 20 exercícios", icon: "🏅", requirement: 20 },
-  { id: "half-way", title: "Meio Caminho", description: "Complete 30 exercícios", icon: "🎯", requirement: 30 },
-  { id: "five-levels", title: "Veterano", description: "Complete 5 níveis", icon: "👑", requirement: "five-levels" },
-  { id: "all-done", title: "Mestre do Vôlei", description: "Complete todos os exercícios", icon: "🏆", requirement: levels.reduce((total, level) => total + level.exercises.length, 0) },
+interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  metric: "exercises" | "levels" | "challenges";
+  requirement: number;
+}
+
+const totalExercises = levels.reduce((total, level) => total + level.exercises.length, 0);
+const halfwayExercises = Math.ceil(totalExercises / 2);
+const totalChallenges = levels.flatMap((level) => level.exercises).filter((exercise) => exercise.type === "challenge").length;
+
+const achievementDefinitions: Achievement[] = [
+  { id: "first-exercise", title: "Primeiro Passo", description: "Complete seu primeiro exercício", icon: "🌟", metric: "exercises", requirement: 1 },
+  { id: "five-exercises", title: "Esquentando", description: "Complete 5 exercícios", icon: "🔥", metric: "exercises", requirement: 5 },
+  { id: "first-challenge", title: "Desafiante", description: "Complete seu primeiro desafio", icon: "⚔️", metric: "challenges", requirement: 1 },
+  { id: "ten-exercises", title: "Dedicado", description: "Complete 10 exercícios", icon: "💎", metric: "exercises", requirement: 10 },
+  { id: "half-way", title: "Meio Caminho", description: `Complete metade do curso (${halfwayExercises} exercícios)`, icon: "🎯", metric: "exercises", requirement: halfwayExercises },
+  { id: "twenty-exercises", title: "Atleta", description: "Complete 20 exercícios", icon: "🏅", metric: "exercises", requirement: 20 },
+  { id: "five-levels", title: "Veterano", description: `Complete todos os ${levels.length} níveis`, icon: "👑", metric: "levels", requirement: levels.length },
+  { id: "all-done", title: "Mestre do Vôlei", description: "Complete todos os exercícios", icon: "🏆", metric: "exercises", requirement: totalExercises },
 ];
+
+// Only expose attainable goals; these same definitions determine the awards.
+const availableTotals = { exercises: totalExercises, levels: levels.length, challenges: totalChallenges };
+export const achievements = achievementDefinitions.filter((achievement) =>
+  achievement.requirement > 0 && achievement.requirement <= availableTotals[achievement.metric]
+);

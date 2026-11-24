@@ -5,3 +5,4 @@
 - Derive landing lesson previews from the existing curriculum and validate video URLs; previews never write progress or bypass course unlocking.
 - Store teacher replies to lesson questions and feedback in one parent-scoped table; enforce admin-only writes and recipient-only reads with RLS, and serve private video attachments with expiring signed URLs.
 - Resolve specific lesson links through stable exercise IDs and preserve the course's existing sequential unlock checks.
+- Define achievement requirements once alongside curriculum data and use them for both display and awards; derive proportional goals from active totals and hide unattainable goals to prevent stale milestones.

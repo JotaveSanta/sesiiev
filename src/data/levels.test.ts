@@ -1,8 +1,36 @@
 import { describe, expect, it } from "vitest";
-import { levels } from "./levels";
+import { achievements, levels } from "./levels";
 import { getActiveCompletedExercises, getPreviousLevel, getUnlockedAchievements } from "@/lib/courseProgress";
 
 describe("curriculum updates", () => {
+  it("awards halfway at 11 of the 21 active exercises, not 30", () => {
+    const ids = levels.flatMap((level) => level.exercises.map((exercise) => exercise.id));
+    expect(achievements.find((achievement) => achievement.id === "half-way")?.requirement).toBe(11);
+    expect(getUnlockedAchievements(10, 1, ids.slice(0, 10))).not.toContain("half-way");
+    expect(getUnlockedAchievements(11, 2, ids.slice(0, 11))).toContain("half-way");
+  });
+
+  it("keeps every achievement attainable and awards all of them on course completion", () => {
+    const ids = levels.flatMap((level) => level.exercises.map((exercise) => exercise.id));
+    const totals = { exercises: 21, levels: 5, challenges: 3 };
+    for (const achievement of achievements) {
+      expect(achievement.requirement).toBeGreaterThan(0);
+      expect(achievement.requirement).toBeLessThanOrEqual(totals[achievement.metric]);
+    }
+    expect(getUnlockedAchievements(21, 5, ids).sort()).toEqual(achievements.map((achievement) => achievement.id).sort());
+  });
+
+  it("does not award milestones from removed lessons or inflated totals", () => {
+    expect(getUnlockedAchievements(30, 5, ["2-5", "4-1", "5-1", "8-1", "9-1", "10-1"])).toEqual([]);
+  });
+
+  it("awards the levels milestone only after all five current levels", () => {
+    const ids = levels.flatMap((level) => level.exercises.map((exercise) => exercise.id));
+    expect(achievements.find((achievement) => achievement.id === "five-levels")?.requirement).toBe(5);
+    expect(getUnlockedAchievements(20, 4, ids.slice(0, -1))).not.toContain("five-levels");
+    expect(getUnlockedAchievements(21, 5, ids)).toContain("five-levels");
+  });
+
   it("removes Manchete de Defesa without renaming existing progress IDs", () => {
     const manchete = levels.find((level) => level.id === 2);
     expect(manchete?.exercises.map((exercise) => exercise.id)).toEqual(["2-1", "2-2", "2-3", "2-4", "2-6"]);
